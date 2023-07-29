@@ -23,6 +23,7 @@ function M.get_options()
 	}
 end
 
+-- Lazy初始化，详情见github
 function M.before()
 	local lazypath = path_util.join(options.storage_directory, "lazy.nvim")
 	if not vim.loop.fs_stat(lazypath) then
@@ -54,11 +55,14 @@ function M.load(plugins)
 			if ok then
 				-- 插件初始化方法，注意插件的config模块生命周期函数要与此一致
 				plugin_options.init = function()
+					-- 插件配置模块生命周期函数
 					module.before()
 				end
 
+				-- 加载插件配置依赖
 				plugin_options.config = function()
 					common.require_packages(module)
+					-- 插件配置模块生命周期函数
 					module.load()
 					module.after()
 				end
@@ -69,18 +73,12 @@ function M.load(plugins)
 	M.lazy.setup(load_modules, M.get_options())
 end
 
-function M.after()
-	M.register_keys()
-end
+function M.after() end
 
 function M.entry(plugins)
 	M.before()
 	M.load(plugins)
 	M.after()
-end
-
-function M.register_keys()
-
 end
 
 return M
