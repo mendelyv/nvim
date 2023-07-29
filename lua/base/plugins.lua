@@ -29,6 +29,7 @@ M.views = {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		config = true,
 		event = { "UIEnter" },
 	},
 }
