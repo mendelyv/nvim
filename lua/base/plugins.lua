@@ -18,6 +18,13 @@ M.basic = {
 	},
 }
 
+M.views = {
+	{
+		"nvim-lualine/lualine.nvim",
+		event = { "UIEnter" },
+	}
+}
+
 lazy.entry(M)
 
 return M
