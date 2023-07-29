@@ -43,7 +43,7 @@ function M.unregister(mode, lhs, opts)
 end
 
 -- 批量注册按键映射
-function M.registerAll(maps)
+function M.register_all(maps)
     for _, map in pairs(maps) do
         M.register(map)
     end

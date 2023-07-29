@@ -50,21 +50,34 @@ function M.load(plugins)
 			local file_name = (plugin_options.name or plugin_options[1]:match("/([%w%-_]+).?")):lower()
 			-- 拼接插件配置文件路径
 			local config_file_path = path_util.join(M.plugin_config_root_directory, plugin_kind_name, file_name)
+			if options.debug then
+				vim.print('插件配置路径' .. config_file_path)
+			end
 			-- 尝试加载插件配置模块
 			local ok, module = pcall(require, config_file_path)
 			if ok then
 				-- 插件初始化方法，注意插件的config模块生命周期函数要与此一致
 				plugin_options.init = function()
 					-- 插件配置模块生命周期函数
-					module.before()
+					if module.before then
+						module.before()
+					end
 				end
 
 				-- 加载插件配置依赖
 				plugin_options.config = function()
 					common.require_packages(module)
 					-- 插件配置模块生命周期函数
-					module.load()
-					module.after()
+					if module.load then
+						module.load()
+					end
+					if module.after then
+						module.after()
+					end
+				end
+			else
+				if options.debug then
+					vim.print(file_name .. '配置加载失败，插件配置路径' .. config_file_path)
 				end
 			end
 			table.insert(load_modules, plugin_options)

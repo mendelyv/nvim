@@ -2,7 +2,7 @@ local map_util = require("utils.keymap")
 
 local M = {}
 
-map_util.registerAll({
+map_util.register_all({
 	{
 		mode = { "t" },
 		lhs = "<esc>",
