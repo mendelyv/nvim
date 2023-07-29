@@ -12,6 +12,10 @@ M.theme = {
 
 M.basic = {
 	{
+		"nvim-lua/plenary.nvim",
+		lazy = true,
+	},
+	{
 		-- 通知
 		"rcarriga/nvim-notify",
 		priority = 90,
@@ -20,9 +24,13 @@ M.basic = {
 
 M.views = {
 	{
+		"nvim-tree/nvim-web-devicons",
+		event = { "VimEnter" },
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		event = { "UIEnter" },
-	}
+	},
 }
 
 lazy.entry(M)
