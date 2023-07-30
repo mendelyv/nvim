@@ -36,6 +36,10 @@ M.views = {
 		event = { "UIEnter" },
 	},
     {
+        "akinsho/bufferline.nvim",
+        event = { "UIEnter" },
+    },
+    {
 	    -- session管理器
         "olimorris/persisted.nvim",
         event = { "VeryLazy" },
