@@ -1,0 +1,71 @@
+-- https://github.com/olimorris/persisted.nvim
+
+local path_util = require("utils.path")
+local keymap = require("utils.keymap")
+
+local M = {
+    requires = {
+        "persisted",
+    },
+}
+
+function M.before()
+    M.register_key()
+end
+
+function M.load()
+    M.persisted.setup({
+	    -- vim.fn.stdpath("cache")不同操作系统的默认路径
+	    -- Linux: ~/.cache/nvim
+-- macOS: ~/.cache/nvim
+-- Windows: ~/AppData/Local/nvim
+        save_dir = path_util.join(vim.fn.stdpath("cache"), "sessions"),
+        -- use_git_branche = true,
+        command = "VimLeavePre",
+        autosave = true,
+        branch_separator = "_",
+        after_save = function()
+            vim.cmd("nohlsearch")
+        end,
+    })
+end
+
+function M.after() end
+
+function M.register_key()
+    keymap.register_all({
+        {
+            mode = { "n" },
+            lhs = "<leader>sl",
+            rhs = "<cmd>silent! SessionLoad<cr>",
+            options = { silent = true },
+            description = "Load session",
+        },
+        {
+            mode = { "n" },
+            lhs = "<leader>ss",
+            rhs = function()
+                vim.cmd("silent! SessionSave")
+                vim.api.nvim_echo({ { "Session saved success", "MoreMsg" } }, true, {})
+            end,
+            options = { silent = true },
+            description = "Save session",
+        },
+        {
+            mode = { "n" },
+            lhs = "<leader>sd",
+            rhs = function()
+                local ok, _ = pcall(vim.cmd, "SessionDelete")
+                if ok then
+                    vim.api.nvim_echo({ { "Session deleted success", "MoreMsg" } }, true, {})
+                else
+                    vim.api.nvim_echo({ { "Session deleted failure", "ErrorMsg" } }, true, {})
+                end
+            end,
+            options = { silent = true },
+            description = "Delete session",
+        },
+    })
+end
+
+return M

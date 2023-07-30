@@ -35,6 +35,11 @@ M.views = {
 		config = true,
 		event = { "UIEnter" },
 	},
+    {
+	    -- session管理器
+        "olimorris/persisted.nvim",
+        event = { "VeryLazy" },
+    },
 }
 
 M.lsp = {
