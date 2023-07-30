@@ -35,7 +35,7 @@ M.opt = {
     -- 是否高亮显示当前光标所在的行
     cursorline = true,
     -- 设置行号（行标）显示的宽度
-    numberwidth = 2,
+    numberwidth = 1,
     -- 设置是否开启行号（行标）
     number = true,
     -- 设置是否开启相对行号（行标）

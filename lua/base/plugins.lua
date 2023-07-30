@@ -44,6 +44,7 @@ M.lsp = {
 		event = { "VimEnter" },
 	},
 	    {
+		    -- LSP
 		"neovim/nvim-lspconfig",
 		dependencies = {
 		    { "williamboman/mason-lspconfig.nvim" },
@@ -53,8 +54,25 @@ M.lsp = {
 
 M.editor = {
 	{
+		-- 文件树
 		"nvim-tree/nvim-tree.lua",
 	},
+	{
+		-- 缩进线
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "UIEnter" },
+	},
+    {
+	    -- 光标文本高亮
+        "RRethy/vim-illuminate",
+        event = { "UIEnter" },
+    },
+    {
+	    -- 括号自动补全
+        "windwp/nvim-autopairs",
+	config = true,
+        event = { "InsertEnter" },
+    },
 }
 
 lazy.entry(M)
