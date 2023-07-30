@@ -1,6 +1,13 @@
 local M = {}
 
 M.diagnostic = {
+    Error = "",
+    Warn = "",
+    Info = "",
+    Hint = "",
+}
+
+M.diagnostic_thin = {
     Error = "",
     Warn = "",
     Info = "ﬤ",

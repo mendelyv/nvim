@@ -22,4 +22,20 @@ function M.require_packages(module)
 	end
 end
 
+function M.get_all_window_buffer_filtype()
+	local window_buffer_filetype = {}
+	local window_tables = vim.api.nvim_list_wins()
+	for _, window_id in ipairs(window_tables) do
+		if vim.api.nvim_win_is_valid(window_id) then
+			local buffer_id = vim.api.nvim_win_get_buf(window_id)
+			table.insert(window_buffer_filetype, {
+				window_id = window_id,
+				buffer_id = buffer_id,
+				buffer_filetype = vim.api.nvim_buf_get_option(buffer_id, "filetype"),
+			})
+		end
+	end
+	return window_buffer_filetype
+end
+
 return M

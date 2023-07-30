@@ -32,18 +32,17 @@ M.views = {
 	{
 		-- 状态栏
 		"nvim-lualine/lualine.nvim",
-		config = true,
 		event = { "UIEnter" },
 	},
-    {
-        "akinsho/bufferline.nvim",
-        event = { "UIEnter" },
-    },
-    {
-	    -- session管理器
-        "olimorris/persisted.nvim",
-        event = { "VeryLazy" },
-    },
+	{
+		"akinsho/bufferline.nvim",
+		event = { "UIEnter" },
+	},
+	{
+		-- session管理器
+		"olimorris/persisted.nvim",
+		event = { "VeryLazy" },
+	},
 }
 
 M.lsp = {
@@ -52,37 +51,41 @@ M.lsp = {
 		"williamboman/mason.nvim",
 		event = { "VimEnter" },
 	},
-	    {
-		    -- LSP
+	{
+		-- LSP
 		"neovim/nvim-lspconfig",
 		dependencies = {
-		    { "williamboman/mason-lspconfig.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 		},
-	    },
+	},
+	{
+		"tami5/lspsaga.nvim",
+		event = { "UIEnter" },
+	},
 }
 
 M.complete = {
-    {
-	    -- 补全插件及其相关的源
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            { "hrsh7th/cmp-path" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-cmdline" },
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "saadparwaiz1/cmp_luasnip" },
-            { "kristijanhusak/vim-dadbod-completion" },
-        },
-        event = { "InsertEnter", "CmdlineEnter" },
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        -- in nvim-cmp config file require luasnip
-        lazy = true,
-        dependencies = {
-            { "rafamadriz/friendly-snippets" },
-        },
-    },
+	{
+		-- 补全插件及其相关的源
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			{ "hrsh7th/cmp-path" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-cmdline" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "kristijanhusak/vim-dadbod-completion" },
+		},
+		event = { "InsertEnter", "CmdlineEnter" },
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		-- in nvim-cmp config file require luasnip
+		lazy = true,
+		dependencies = {
+			{ "rafamadriz/friendly-snippets" },
+		},
+	},
 }
 
 M.editor = {
@@ -95,17 +98,17 @@ M.editor = {
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "UIEnter" },
 	},
-    {
-	    -- 光标文本高亮
-        "RRethy/vim-illuminate",
-        event = { "UIEnter" },
-    },
-    {
-	    -- 括号自动补全
-        "windwp/nvim-autopairs",
-	config = true,
-        event = { "InsertEnter" },
-    },
+	{
+		-- 光标文本高亮
+		"RRethy/vim-illuminate",
+		event = { "UIEnter" },
+	},
+	{
+		-- 括号自动补全
+		"windwp/nvim-autopairs",
+		config = true,
+		event = { "InsertEnter" },
+	},
 }
 
 lazy.entry(M)
