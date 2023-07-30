@@ -61,6 +61,30 @@ M.lsp = {
 	    },
 }
 
+M.complete = {
+    {
+	    -- 补全插件及其相关的源
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            { "hrsh7th/cmp-path" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "kristijanhusak/vim-dadbod-completion" },
+        },
+        event = { "InsertEnter", "CmdlineEnter" },
+    },
+    {
+        "L3MON4D3/LuaSnip",
+        -- in nvim-cmp config file require luasnip
+        lazy = true,
+        dependencies = {
+            { "rafamadriz/friendly-snippets" },
+        },
+    },
+}
+
 M.editor = {
 	{
 		-- 文件树

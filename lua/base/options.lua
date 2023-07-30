@@ -9,6 +9,8 @@ local M = {
 	storage_directory = path_util.join(vim.fn.stdpath("data"), "store"),
 	-- 语言服务存放路径
 	mason_install_directory = path_util.join(vim.fn.stdpath("data"), "mason"),
+	-- 代码片段存放路径
+	snippets_config_directory = path_util.join(vim.fn.stdpath("config"), "snippets"),
 	-- 悬浮窗
 	float_border = true,
 	-- 透明

@@ -73,7 +73,7 @@ M.opt = {
     -- 设置初始折叠级别。该选项决定了打开文件时代码的折叠状态
     foldlevelstart = 99,
     -- 设置显示折叠标识列的宽度
-    foldcolumn = "2",
+    foldcolumn = "0",
     -- 设置是否使用系统剪贴板（Clipboard）来进行复制和粘贴操作，即使用匿名寄存器
     clipboard = "unnamedplus",
     -- 控制智能缩进（Smart Indentation）的行为
