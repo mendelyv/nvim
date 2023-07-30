@@ -59,8 +59,14 @@ M.lsp = {
 		},
 	},
 	{
+		-- LSP美化工具
 		"tami5/lspsaga.nvim",
 		event = { "UIEnter" },
+	},
+	{
+		-- 面包屑导航
+		"SmiteshP/nvim-navic",
+		lazy = true,
 	},
 }
 

@@ -9,6 +9,7 @@ local M = {
 	requires = {
 		"lspconfig",
 		"mason-lspconfig",
+		"nvim-navic",
 	},
 	server_configurations_directory = path_util.join("configs", "lsp", "configurations")
 }
@@ -35,6 +36,7 @@ function M.load()
 			-- 语言服务on_attach回调
 			local private_on_attach = configuration.on_attach
 			configuration.on_attach = function(client, bufnr)
+				M.nvim_navic.attach(client, bufnr)
 				private_on_attach(client, bufnr)
 			end
 			-- 启用语言服务
@@ -47,6 +49,7 @@ function M.after()
 	M.register_key()
 end
 
+-- lspsaga后配置，不然会被lspsaga默认配置覆盖
 function M.after_lspsaga()
 	vim.diagnostic.config({
 		-- 诊断的虚拟文本

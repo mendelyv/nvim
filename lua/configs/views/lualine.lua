@@ -52,7 +52,7 @@ function M.load()
 						error = icons.Error,
 						warn = icons.Warn,
 						info = icons.Info,
-						hint = icons.hint,
+						hint = icons.Hint,
 					},
 				},
 			},
