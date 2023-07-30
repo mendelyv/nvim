@@ -68,6 +68,12 @@ M.lsp = {
 		"SmiteshP/nvim-navic",
 		lazy = true,
 	},
+    {
+	    -- LSP进度插件
+        "j-hui/fidget.nvim",
+	tag = "legacy",
+        event = { "UIEnter" },
+    },
 }
 
 M.complete = {
