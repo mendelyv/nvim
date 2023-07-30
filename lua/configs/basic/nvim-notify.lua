@@ -1,10 +1,8 @@
 -- https://github.com/rcarriga/nvim-notify
 
-local icons = require("utils.icons").get_icon("diagnostic", true)
+local icons = require("utils.icons").get_icons("diagnostic", true)
 local keymap = require("utils.keymap")
 local options = require("base.options")
-
-local M = {}
 
 local M = {
 	requires = {

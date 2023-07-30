@@ -51,6 +51,12 @@ M.lsp = {
 	    },
 }
 
+M.editor = {
+	{
+		"nvim-tree/nvim-tree.lua",
+	},
+}
+
 lazy.entry(M)
 
 return M

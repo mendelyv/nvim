@@ -56,7 +56,7 @@ M.lsp_kind = {
 
 -- 获取图标分组
 -- space 是否需要整体添加空格
-function M.get_icon(group_name, space)
+function M.get_icons(group_name, space)
 	local icons = vim.deepcopy(M[group_name])
 	if space then
 		for tag, code in pairs(icons) do
