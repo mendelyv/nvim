@@ -130,6 +130,10 @@ M.editor = {
         },
         event = { "UIEnter" },
     },
+    {
+        "nvim-telescope/telescope.nvim",
+        lazy = true,
+    },
 }
 
 lazy.entry(M)

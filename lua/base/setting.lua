@@ -100,6 +100,9 @@ M.opt = {
     -- tabpages: 保存标签页信息
     -- unix: 使用 UNIX 风格的文件路径
     sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals",
+    -- 分屏时是否自动调整窗口尺寸
+	equalalways = false,
+	eadirection = "hor",
 }
 
 for prefix, tbl in pairs(M) do
