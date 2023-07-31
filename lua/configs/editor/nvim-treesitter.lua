@@ -33,13 +33,6 @@ function M.load()
                 scope_incremental = "<tab>",
             },
         },
-        -- nvim-ts-rainbow
-        rainbow = {
-            enable = true,
-            extended_mode = true,
-            -- Do not enable for files with more than 1000 lines, int
-            max_file_lines = 1000,
-        },
         -- nvim-ts-autotag
         autotag = {
             enable = true,

@@ -124,7 +124,6 @@ M.editor = {
     {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
-            { "mrjones2014/nvim-ts-rainbow" },
             { "windwp/nvim-ts-autotag" },
             { "JoosepAlviste/nvim-ts-context-commentstring" },
         },
