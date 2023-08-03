@@ -74,16 +74,16 @@ function M.register_keys()
 		{
 			mode = { "n" },
 			lhs = "<leader>bh",
-			rhs = "<cmd>BufferLineMovePrev<cr>",
+			rhs = "<cmd>BufferLineCloseLeft<cr>",
 			options = { silent = true },
-			description = "Move current buffer to left",
+			description = "Close all left buffers",
 		},
 		{
 			mode = { "n" },
 			lhs = "<leader>bl",
-			rhs = "<cmd>BufferLineMoveNext<cr>",
+			rhs = "<cmd>BufferLineCloseRight<cr>",
 			options = { silent = true },
-			description = "Move current buffer to right",
+			description = "Close all right buffers",
 		},
 		{
 			mode = { "n" },
@@ -91,6 +91,20 @@ function M.register_keys()
 			rhs = "<cmd>BufferLineCloseOthers<cr>",
 			options = { silent = true },
 			description = "Close all other buffers",
+		},
+		{
+			mode = { "n" },
+			lhs = "<c-k>",
+			rhs = "<cmd>BufferLineMovePrev<cr>",
+			options = { silent = true },
+			description = "Move current buffer to left",
+		},
+		{
+			mode = { "n" },
+			lhs = "<c-j>",
+			rhs = "<cmd>BufferLineMoveNext<cr>",
+			options = { silent = true },
+			description = "Move current buffer to right",
 		},
 	})
 end

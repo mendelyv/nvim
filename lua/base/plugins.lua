@@ -140,6 +140,13 @@ M.editor = {
 		"folke/flash.nvim",
 		event = "VeryLazy",
 	},
+	{
+		"numToStr/Comment.nvim",
+		dependencies = {
+			{ "JoosepAlviste/nvim-ts-context-commentstring" },
+		},
+		event = { "VeryLazy" },
+	},
 }
 
 lazy.entry(M)
