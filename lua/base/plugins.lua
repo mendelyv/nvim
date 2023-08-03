@@ -43,6 +43,9 @@ M.views = {
 		"olimorris/persisted.nvim",
 		event = { "VeryLazy" },
 	},
+	{
+		"folke/twilight.nvim",
+	},
 }
 
 M.lsp = {
@@ -68,12 +71,12 @@ M.lsp = {
 		"SmiteshP/nvim-navic",
 		lazy = true,
 	},
-    {
-	    -- LSP进度插件
-        "j-hui/fidget.nvim",
-	tag = "legacy",
-        event = { "UIEnter" },
-    },
+	{
+		-- LSP进度插件
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = { "UIEnter" },
+	},
 }
 
 M.complete = {
@@ -121,18 +124,22 @@ M.editor = {
 		config = true,
 		event = { "InsertEnter" },
 	},
-    {
-        "nvim-treesitter/nvim-treesitter",
-        dependencies = {
-            { "windwp/nvim-ts-autotag" },
-            { "JoosepAlviste/nvim-ts-context-commentstring" },
-        },
-        event = { "UIEnter" },
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        lazy = true,
-    },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			{ "windwp/nvim-ts-autotag" },
+			{ "JoosepAlviste/nvim-ts-context-commentstring" },
+		},
+		event = { "UIEnter" },
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		lazy = true,
+	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+	},
 }
 
 lazy.entry(M)

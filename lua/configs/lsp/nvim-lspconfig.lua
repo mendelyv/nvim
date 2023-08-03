@@ -11,7 +11,14 @@ local M = {
 		"mason-lspconfig",
 		"nvim-navic",
 	},
-	server_configurations_directory = path_util.join("configs", "lsp", "configurations")
+	server_configurations_directory = path_util.join("configs", "lsp", "configurations"),
+	telescope_builtin_lsp_options = {
+		fname_width = 200,
+		show_line = false,
+	},
+	telescope_builtin_diagnostic_options = {
+		line_width = 200,
+	}
 }
 
 function M.load()
@@ -115,7 +122,7 @@ function M.register_key()
 			mode = { "n" },
 			lhs = "gr",
 			rhs = function()
-				require("telescope.builtin").lsp_references()
+				require("telescope.builtin").lsp_references(M.telescope_builtin_lsp_options)
 			end,
 			options = { silent = true },
 			description = "Go to references",
@@ -124,7 +131,7 @@ function M.register_key()
 			mode = { "n" },
 			lhs = "gi",
 			rhs = function()
-				require("telescope.builtin").lsp_implementations()
+				require("telescope.builtin").lsp_implementations(M.telescope_builtin_lsp_options)
 			end,
 			options = { silent = true },
 
@@ -134,7 +141,7 @@ function M.register_key()
 			mode = { "n" },
 			lhs = "gd",
 			rhs = function()
-				require("telescope.builtin").lsp_definitions()
+				require("telescope.builtin").lsp_definitions(M.telescope_builtin_lsp_options)
 			end,
 			options = { silent = true },
 			description = "Go to definitions",
@@ -143,7 +150,7 @@ function M.register_key()
 			mode = { "n" },
 			lhs = "gD",
 			rhs = function()
-				require("telescope.builtin").lsp_type_definitions()
+				require("telescope.builtin").lsp_type_definitions(M.telescope_builtin_lsp_options)
 			end,
 			options = { silent = true },
 			description = "Go to type definitions",
@@ -152,7 +159,7 @@ function M.register_key()
 			mode = { "n" },
 			lhs = "go",
 			rhs = function()
-				require("telescope.builtin").diagnostics()
+				require("telescope.builtin").diagnostics(M.telescope_builtin_diagnostic_options)
 			end,
 			options = { silent = true },
 			description = "Show Workspace Diagnostics",

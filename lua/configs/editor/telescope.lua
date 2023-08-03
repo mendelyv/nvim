@@ -21,15 +21,8 @@ function M.load()
             color_devicons = true,
             file_ignore_patterns = { "node_modules" },
             -- theme
-            layout_strategy = "bottom_pane",
-            -- config
-            layout_config = {
-                bottom_pane = {
-                    height = 15,
-                    preview_cutoff = 100,
-                    prompt_position = "bottom",
-                },
-            },
+            layout_strategy = "vertical",
+	    -- path_display = { "tail" },
         },
         pickers = {
             buffers = {
