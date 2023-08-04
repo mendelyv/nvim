@@ -151,6 +151,13 @@ M.editor = {
 		},
 		event = { "VeryLazy" },
 	},
+	{
+		"ur4ltz/surround.nvim",
+		dependencies = {
+			{ "tpope/vim-repeat" },
+		},
+		event = { "VeryLazy" },
+	},
 }
 
 lazy.entry(M)
