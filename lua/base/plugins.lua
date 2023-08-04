@@ -167,6 +167,9 @@ M.editor = {
 		},
 		config = true,
 	},
+	{
+		"simrat39/symbols-outline.nvim",
+	},
 }
 
 lazy.entry(M)

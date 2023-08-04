@@ -11,7 +11,8 @@ function M.load()
 		chunk = {
 			style = {
 				{ fg = "#676767" },
-			}
+			},
+			notify = false,
 		},
 		indent = {
 			enable = false,

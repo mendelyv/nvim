@@ -1,7 +1,7 @@
 local path_util = require("utils.path")
 
 local M = {
-	debug = true,
+	debug = false,
 
 	-- 插件存放路径
 	-- Linux下一般在$HOME/.local/share/nvim/${yourpath}
