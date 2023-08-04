@@ -158,6 +158,13 @@ M.editor = {
 		},
 		event = { "VeryLazy" },
 	},
+	{
+		"danymat/neogen",
+		dependencies = {
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = true,
+	},
 }
 
 lazy.entry(M)
