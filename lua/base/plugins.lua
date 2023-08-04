@@ -108,9 +108,13 @@ M.editor = {
 		-- 文件树
 		"nvim-tree/nvim-tree.lua",
 	},
+	-- {
+	-- 	-- 缩进线
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	event = { "UIEnter" },
+	-- },
 	{
-		-- 缩进线
-		"lukas-reineke/indent-blankline.nvim",
+		"shellRaining/hlchunk.nvim",
 		event = { "UIEnter" },
 	},
 	{

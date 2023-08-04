@@ -11,6 +11,9 @@ function M.load()
 		modes = {
 			search = {
 				highlight = { backdrop = true },
+			},
+			char = {
+				multi_line = false,
 			}
 		}
 	})
