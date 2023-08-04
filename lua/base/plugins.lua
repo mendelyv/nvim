@@ -110,11 +110,6 @@ M.editor = {
 		-- 文件树
 		"nvim-tree/nvim-tree.lua",
 	},
-	-- {
-	-- 	-- 缩进线
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	event = { "UIEnter" },
-	-- },
 	{
 		"shellRaining/hlchunk.nvim",
 		event = { "UIEnter" },
@@ -169,6 +164,11 @@ M.editor = {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
+		lazy = true,
+	},
+	{
+		"nvim-pack/nvim-spectre",
+		lazy = true,
 	},
 }
 
