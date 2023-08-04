@@ -21,6 +21,11 @@ M.basic = {
 		"rcarriga/nvim-notify",
 		priority = 90,
 	},
+	{
+		-- key binding map
+		"folke/which-key.nvim",
+		event = { "VeryLazy" },
+	},
 }
 
 M.views = {
@@ -42,9 +47,6 @@ M.views = {
 		-- session管理器
 		"olimorris/persisted.nvim",
 		event = { "VeryLazy" },
-	},
-	{
-		"folke/twilight.nvim",
 	},
 }
 

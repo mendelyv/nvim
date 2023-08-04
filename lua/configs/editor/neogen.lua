@@ -1,7 +1,7 @@
 -- https://github.com/danymat/neogen
 
-local api = require("utils.api")
--- local i = require("neogen.types.template").item
+local keymap = require('utils.keymap')
+
 local M = {
     requires = {
         "neogen",
@@ -79,7 +79,7 @@ end
 function M.after() end
 
 function M.register_key()
-    api.map.bulk_register({
+    keymap.register_all({
         {
             mode = { "n" },
             lhs = "<leader>nf",
