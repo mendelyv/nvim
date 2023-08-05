@@ -22,7 +22,7 @@ function M.require_packages(module)
 	end
 end
 
-function M.get_all_window_buffer_filtype()
+function M.get_all_window_buffer_filetype()
 	local window_buffer_filetype = {}
 	local window_tables = vim.api.nvim_list_wins()
 	for _, window_id in ipairs(window_tables) do

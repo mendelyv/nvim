@@ -4,6 +4,7 @@ local path_util = require("utils.path")
 local options = require("base.options")
 local keymap = require("utils.keymap")
 local icons = require("utils.icons").get_icons("diagnostic", true)
+local common = require('utils.common')
 
 local M = {
 	requires = {
@@ -18,6 +19,20 @@ local M = {
 	},
 	telescope_builtin_diagnostic_options = {
 		line_width = 200,
+	},
+	lsp_handlers = {
+		-- 给两个lsp浮动窗添加边框显示
+		-- vim.lsp.handlers["textDocument/hover"]: 处理悬停信息请求，例如 vim.lsp.buf.hover()。
+		-- vim.lsp.handlers["textDocument/signatureHelp"]: 处理函数参数提示信息请求，例如 vim.lsp.buf.signature_help()。
+		-- vim.lsp.handlers["textDocument/definition"]: 处理跳转到定义请求，例如 vim.lsp.buf.definition()。
+		-- vim.lsp.handlers["textDocument/references"]: 处理查找引用请求，例如 vim.lsp.buf.references()。
+		-- vim.lsp.handlers["textDocument/codeAction"]: 处理代码操作请求，例如 vim.lsp.buf.code_action()。
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+			border = options.float_border and "rounded" or "none",
+		}),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+			border = options.float_border and "rounded" or "none",
+		})
 	}
 }
 
@@ -42,6 +57,7 @@ function M.load()
 		if not vim.tbl_contains(options.disabled_language_servers, server_name) then
 			-- 语言服务on_attach回调
 			local private_on_attach = configuration.on_attach
+			configuration.handlers = M.get_handlers(configuration)
 			configuration.on_attach = function(client, bufnr)
 				M.nvim_navic.attach(client, bufnr)
 				private_on_attach(client, bufnr)
@@ -54,6 +70,7 @@ end
 
 function M.after()
 	M.register_key()
+	M.after_lspsaga()
 end
 
 -- lspsaga后配置，不然会被lspsaga默认配置覆盖
@@ -91,7 +108,7 @@ function M.register_key()
 		{
 			mode = { "n" },
 			lhs = "<leader>ca",
-			rhs = "<cmd>Lspsaga code_action<cr>",
+			rhs = vim.lsp.buf.code_action,
 			options = { silent = true },
 			description = "Show code action",
 		},
@@ -114,7 +131,7 @@ function M.register_key()
 		{
 			mode = { "n" },
 			lhs = "gh",
-			rhs = "<cmd>Lspsaga hover_doc<cr>",
+			rhs = vim.lsp.buf.hover,
 			options = { silent = true },
 			description = "Show help information",
 		},
@@ -167,25 +184,52 @@ function M.register_key()
 		{
 			mode = { "n" },
 			lhs = "g[",
-			rhs = "<cmd>Lspsaga diagnostic_jump_prev<cr>",
+			rhs = M.goto_prev_diagnostic,
 			options = { silent = true },
 			description = "Jump to prev diagnostic",
 		},
 		{
 			mode = { "n" },
 			lhs = "g]",
-			rhs = "<cmd>Lspsaga diagnostic_jump_next<cr>",
+			rhs = M.goto_next_diagnostic,
 			options = { silent = true },
 			description = "Jump to next diagnostic",
 		},
 		{
 			mode = { "n" },
 			lhs = "gl",
-			rhs = "<cmd>Lspsaga show_line_diagnostics<cr>",
+			rhs = M.show_line_diagnostic,
 			options = { silent = true },
 			description = "Show current line disgnostics",
 		},
+		{
+			mode = { "i" },
+			lhs = "<c-j>",
+			rhs = M.toggle_sigature_help,
+			options = { silent = true },
+			description = "Toggle signature help",
+		},
 	})
+end
+
+function M.toggle_sigature_help()
+	vim.lsp.buf.signature_help()
+end
+
+function M.show_line_diagnostic()
+	vim.diagnostic.open_float({ border = options.float_border and "rounded" or "none" })
+end
+
+function M.goto_prev_diagnostic()
+	vim.diagnostic.goto_prev({ float = { border = options.float_border and "rounded" or "none" } })
+end
+
+function M.goto_next_diagnostic()
+	vim.diagnostic.goto_next({ float = { border = options.float_border and "rounded" or "none" } })
+end
+
+function M.get_handlers(settings)
+	return vim.tbl_deep_extend("force", M.lsp_handlers, settings.handlers or {})
 end
 
 return M

@@ -63,11 +63,15 @@ M.lsp = {
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
 	},
-	{
-		-- LSP美化工具
-		"tami5/lspsaga.nvim",
-		event = { "UIEnter" },
-	},
+	-- {
+	-- 	-- LSP美化工具
+	-- 	"tami5/lspsaga.nvim",
+	-- 	event = { "UIEnter" },
+	-- },
+	-- {
+	-- 	"jinzhongjia/LspUI.nvim",
+	-- 	event = "VeryLazy",
+	-- },
 	{
 		-- 面包屑导航
 		"SmiteshP/nvim-navic",
