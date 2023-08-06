@@ -2,17 +2,17 @@
 
 local nvim_lspconfig = require("configs.lsp.nvim-lspconfig")
 local M = {
-	requires = {
-		"LspUI",
-	}
+  requires = {
+    "LspUI",
+  }
 }
 
 function M.load()
-	M.lspui.setup()
+  M.lspui.setup()
 end
 
 function M.after()
-	nvim_lspconfig.after_lspsaga()
+  nvim_lspconfig.after_lspsaga()
 end
 
 return M
