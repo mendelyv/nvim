@@ -9,6 +9,10 @@ local M = {
   }
 }
 
+function M.before()
+  M.register_keys()
+end
+
 function M.load()
   M.symbols_outline.setup({
     width = 40,
@@ -46,10 +50,6 @@ function M.load()
       TypeParameter = { icon = icons.TypeParameter, hl = "@parameter" },
     }
   })
-end
-
-function M.after()
-  M.register_keys()
 end
 
 function M.register_keys()

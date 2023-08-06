@@ -169,6 +169,10 @@ M.editor = {
     "nvim-pack/nvim-spectre",
     lazy = true,
   },
+  {
+    "folke/todo-comments.nvim",
+    lazy = true,
+  }
 }
 
 lazy.entry(M)

@@ -9,6 +9,10 @@ local M = {
   },
 }
 
+function M.before()
+  M.register_keys()
+end
+
 function M.load()
   M.bufferline.setup({
     options = {
@@ -42,10 +46,6 @@ function M.load()
       end,
     },
   })
-end
-
-function M.after()
-  M.register_keys()
 end
 
 function M.register_keys()
