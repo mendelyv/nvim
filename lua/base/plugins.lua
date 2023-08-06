@@ -168,7 +168,7 @@ M.editor = {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		lazy = true,
+		event = { "UIEnter" },
 	},
 	{
 		"nvim-pack/nvim-spectre",

@@ -22,7 +22,8 @@ function M.load()
 
     M.luasnip_loaders_from_vscode.lazy_load({
         paths = {
-            path_util.join(options.snippets_config_directory, "snippets"),
+            options.snippets_config_directory,
+	    path_util.join(options.storage_directory, "friendly-snippets"),
         },
     })
 end

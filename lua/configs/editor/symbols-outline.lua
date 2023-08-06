@@ -9,10 +9,6 @@ local M = {
 	}
 }
 
-function M.before()
-	vim.print('symbols_outline before')
-end
-
 function M.load()
 	M.symbols_outline.setup({
 		width = 40,

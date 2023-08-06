@@ -52,6 +52,13 @@ function M.register_keys()
 	keymap.register_all({
 		{
 			mode = { "n" },
+			lhs = "<c-q>",
+			rhs = "<cmd>bdelete<cr>",
+			options = { silent = true },
+			description = "Close current buffer",
+		},
+		{
+			mode = { "n" },
 			lhs = "<leader>bp",
 			rhs = "<cmd>BufferLinePickClose<cr>",
 			options = { silent = true },

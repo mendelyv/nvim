@@ -1,0 +1,102 @@
+{
+  "nestservice": {
+    "prefix": "nestservice",
+    "body": [
+      "import { Inject, Injectable } from \"@nestjs/common\";",
+      "",
+      "@Injectable()",
+      "export class ${1:DefaultService} {",
+      "    @Inject(${3})",
+      "    protected readonly table: typeof ${2};",
+      "}"
+    ],
+    "description": "Nestjs service default code"
+  },
+  "nestcontroller": {
+    "prefix": "nestcontroller",
+    "body": [
+      "import { Inject, Controller } from \"@nestjs/common\";",
+      "",
+      "@Controller('${2}')",
+      "export class ${1:DefaultController} {",
+      "    @Inject()",
+      "    protected readonly service: ${3};",
+      "}"
+    ],
+    "description": "Nestjs controller default code"
+  },
+  "seqtsentity": {
+    "prefix": "seqtsentity",
+    "body": [
+      "import { Model, Table } from \"sequelize-typescript\";",
+      "",
+      "@Table({",
+      "    tableName: '${2}',",
+      "    comment: '${3}',",
+      "})",
+      "export class ${1} extends Model<${1}> {",
+      "${0}",
+      "}"
+    ],
+    "description": "Nestjs entity default code"
+  },
+  "nestmodule": {
+    "prefix": "nestmodule",
+    "body": [
+      "import { Module } from '@nestjs/common';",
+      "",
+      "@Module({",
+      "${2}",
+      "})",
+      "export class ${1:DefaultModule} { }"
+    ],
+    "description": "Nestjs module default code"
+  },
+  "qsncrud": {
+    "prefix": "qsncrud",
+    "body": [
+      "@${3}()",
+      "@ApiOperation({ summary: '' })",
+      "@${4}()",
+      "async ${1}(${2}) {",
+      "    return new BaseResponseWithData(await this.service.${1}());",
+      "}"
+    ],
+    "description": "Qushen Nest CRUD controller template code"
+  },
+  "clsann": {
+    "prefix": "clsann",
+    "body": [
+      "/**",
+      " * @class: ${1}",
+      " * @description: ${2}",
+      " * @author: Ran",
+      " * @time: ${3}",
+      " */"
+    ],
+    "description": "Class annotation"
+  },
+  "funann": {
+    "prefix": "funann",
+    "body": [
+      "/**",
+      " * ${0}",
+      " */"
+    ],
+    "description": "Function annotation"
+  },
+  "vann": {
+    "prefix": "vann",
+    "body": [
+      "/** ${0} */"
+    ],
+    "description": "Value annotation"
+  },
+  "rtd": {
+    "prefix": "rtd",
+    "body": [
+      "// Ran TODO: ${0}"
+    ],
+    "description": "todo annotation"
+  }
+}
