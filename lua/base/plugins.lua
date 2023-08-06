@@ -78,6 +78,10 @@ M.lsp = {
     tag = "legacy",
     event = { "UIEnter" },
   },
+  {
+    "mhartington/formatter.nvim",
+    event = { "VeryLazy" },
+  },
 }
 
 M.complete = {

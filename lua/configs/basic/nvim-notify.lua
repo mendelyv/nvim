@@ -12,7 +12,6 @@ local M = {
 
 function M.before()
   M.register_keys()
-  vim.notify = M.notify
 end
 
 function M.load()
@@ -26,6 +25,10 @@ function M.load()
     },
     background_colour = options.transparent and "#000000" or "Normal"
   })
+end
+
+function M.after()
+  vim.notify = M.notify
 end
 
 function M.register_keys()

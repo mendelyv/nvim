@@ -78,25 +78,17 @@
   },
   "funann": {
     "prefix": "funann",
-    "body": [
-      "/**",
-      " * ${0}",
-      " */"
-    ],
+    "body": ["/**", " * ${0}", " */"],
     "description": "Function annotation"
   },
   "vann": {
     "prefix": "vann",
-    "body": [
-      "/** ${0} */"
-    ],
+    "body": ["/** ${0} */"],
     "description": "Value annotation"
   },
   "rtd": {
     "prefix": "rtd",
-    "body": [
-      "// Ran TODO: ${0}"
-    ],
+    "body": ["// Ran TODO: ${0}"],
     "description": "todo annotation"
   }
 }

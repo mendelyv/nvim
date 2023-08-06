@@ -119,15 +119,16 @@ function M.register_key()
       options = { silent = true },
       description = "Variable renaming",
     },
-    {
-      mode = { "n" },
-      lhs = "<leader>cf",
-      rhs = function()
-        vim.lsp.buf.format({ async = true })
-      end,
-      options = { silent = true },
-      description = "Format buffer",
-    },
+    -- {
+    --   mode = { "n" },
+    --   lhs = "<leader>cf",
+    --   -- rhs = function()
+    --   --   vim.lsp.buf.format({ async = true })
+    --   -- end,
+    --   rhs = M.format,
+    --   options = { silent = true },
+    --   description = "Format buffer",
+    -- },
     {
       mode = { "n" },
       lhs = "gh",
