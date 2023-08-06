@@ -73,14 +73,15 @@ M.lsp = {
     lazy = true,
   },
   {
+    -- 代码格式化
+    "mhartington/formatter.nvim",
+    event = { "VeryLazy" },
+  },
+  {
     -- LSP进度插件
     "j-hui/fidget.nvim",
     tag = "legacy",
-    event = { "UIEnter" },
-  },
-  {
-    "mhartington/formatter.nvim",
-    event = { "VeryLazy" },
+    event = { "LspAttach" },
   },
 }
 
@@ -164,6 +165,7 @@ M.editor = {
       { "nvim-treesitter/nvim-treesitter" },
     },
     config = true,
+    lazy = true,
   },
   {
     "simrat39/symbols-outline.nvim",

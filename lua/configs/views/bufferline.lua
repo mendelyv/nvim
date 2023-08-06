@@ -1,7 +1,7 @@
 -- https://github.com/akinsho/bufferline.nvim
 
 local keymap = require("utils.keymap")
-local icons = require("utils.icons").get_icons("diagnostic_thin", true)
+local icons = require("utils.icons").get_icons("diagnostic", true)
 
 local M = {
   requires = {
@@ -29,16 +29,17 @@ function M.load()
       },
       diagnostics = "nvim_lsp",
       ---@diagnostic disable-next-line: unused-local
+      -- 设置LSP检测图标，只显示警告和错误
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
         local message
         if diagnostics_dict.error then
           message = ("%s%s"):format(icons.Error, diagnostics_dict.error)
         elseif diagnostics_dict.warning then
           message = ("%s%s"):format(icons.Warn, diagnostics_dict.warning)
-        elseif diagnostics_dict.info then
-          message = ("%s%s"):format(icons.Info, diagnostics_dict.info)
-        elseif diagnostics_dict.hint then
-          message = ("%s%s"):format(icons.Hint, diagnostics_dict.hint)
+        -- elseif diagnostics_dict.info then
+        --   message = ("%s%s"):format(icons.Info, diagnostics_dict.info)
+        -- elseif diagnostics_dict.hint then
+        --   message = ("%s%s"):format(icons.Hint, diagnostics_dict.hint)
         else
           message = ""
         end
