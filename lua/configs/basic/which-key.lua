@@ -17,10 +17,9 @@ function M.load()
       },
     },
     icons = {
-      breadcrumb = " ",
-      separator = " ",
-      group = " ",
-    },
+      separator = '󱚃 ',
+      group = "󰉺 ",
+    }
   })
 end
 
