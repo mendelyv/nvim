@@ -10,7 +10,7 @@ function M.load()
   M.hlchunk.setup({
     chunk = {
       style = {
-        { fg = "#676767" },
+        { fg = "#999999" },
       },
       notify = false,
     },

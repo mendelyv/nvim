@@ -48,6 +48,10 @@ M.views = {
     "olimorris/persisted.nvim",
     event = { "VeryLazy" },
   },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = true,
+  }
 }
 
 M.lsp = {
