@@ -13,13 +13,6 @@ local M = {
     "nvim-navic",
   },
   server_configurations_directory = path_util.join("configs", "lsp", "configurations"),
-  telescope_builtin_lsp_options = {
-    fname_width = 200,
-    show_line = false,
-  },
-  telescope_builtin_diagnostic_options = {
-    line_width = 200,
-  },
   lsp_handlers = {
     -- 给两个lsp浮动窗添加边框显示
     -- vim.lsp.handlers["textDocument/hover"]: 处理悬停信息请求，例如 vim.lsp.buf.hover()。
@@ -130,44 +123,28 @@ function M.register_key()
       mode = { "n" },
       lhs = "gr",
       rhs = function()
-        require("telescope.builtin").lsp_references(M.telescope_builtin_lsp_options)
+        require("telescope.builtin").lsp_references({
+          fname_width = 200,
+          show_line = false,
+        })
       end,
       options = { silent = true },
       description = "Go to references",
     },
     {
       mode = { "n" },
-      lhs = "gi",
-      rhs = function()
-        require("telescope.builtin").lsp_implementations(M.telescope_builtin_lsp_options)
-      end,
-      options = { silent = true },
-
-      description = "Go to implementations",
-    },
-    {
-      mode = { "n" },
       lhs = "gd",
-      rhs = function()
-        require("telescope.builtin").lsp_definitions(M.telescope_builtin_lsp_options)
-      end,
+      rhs = vim.lsp.buf.definition,
       options = { silent = true },
       description = "Go to definitions",
     },
     {
       mode = { "n" },
-      lhs = "gD",
-      rhs = function()
-        require("telescope.builtin").lsp_type_definitions(M.telescope_builtin_lsp_options)
-      end,
-      options = { silent = true },
-      description = "Go to type definitions",
-    },
-    {
-      mode = { "n" },
       lhs = "go",
       rhs = function()
-        require("telescope.builtin").diagnostics(M.telescope_builtin_diagnostic_options)
+        require("telescope.builtin").diagnostics({
+          line_width = 200,
+        })
       end,
       options = { silent = true },
       description = "Show Workspace Diagnostics",
