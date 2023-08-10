@@ -4,13 +4,11 @@ local path_util = require("utils.path")
 local options = require("base.options")
 local keymap = require("utils.keymap")
 local icons = require("utils.icons").get_icons("diagnostic", true)
-local common = require('utils.common')
 
 local M = {
   requires = {
     "lspconfig",
     "mason-lspconfig",
-    "nvim-navic",
   },
   server_configurations_directory = path_util.join("configs", "lsp", "configurations"),
   lsp_handlers = {
@@ -52,7 +50,6 @@ function M.load()
       local private_on_attach = configuration.on_attach
       configuration.handlers = M.get_handlers(configuration)
       configuration.on_attach = function(client, bufnr)
-        M.nvim_navic.attach(client, bufnr)
         private_on_attach(client, bufnr)
       end
       -- 启用语言服务
@@ -134,7 +131,12 @@ function M.register_key()
     {
       mode = { "n" },
       lhs = "gd",
-      rhs = vim.lsp.buf.definition,
+      rhs = function()
+        require("telescope.builtin").lsp_definitions({
+          fname_width = 200,
+          show_line = false,
+        })
+      end,
       options = { silent = true },
       description = "Go to definitions",
     },

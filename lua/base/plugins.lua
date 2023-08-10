@@ -68,11 +68,6 @@ M.lsp = {
     },
   },
   {
-    -- 面包屑导航
-    "SmiteshP/nvim-navic",
-    lazy = true,
-  },
-  {
     -- 代码格式化
     "mhartington/formatter.nvim",
     event = { "VeryLazy" },
@@ -175,10 +170,6 @@ M.editor = {
     "nvim-pack/nvim-spectre",
     lazy = true,
   },
-  {
-    "folke/todo-comments.nvim",
-    lazy = true,
-  }
 }
 
 lazy.entry(M)
