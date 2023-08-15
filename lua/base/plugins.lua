@@ -163,7 +163,7 @@ M.editor = {
     lazy = true,
   },
   {
-    "simrat39/symbols-outline.nvim",
+    "stevearc/aerial.nvim",
     event = { "UIEnter" },
   },
   {
