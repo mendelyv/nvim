@@ -78,6 +78,11 @@ M.lsp = {
     tag = "legacy",
     event = { "LspAttach" },
   },
+  {
+    -- 导航栏插件
+    "SmiteshP/nvim-navic",
+    lazy = true,
+  },
 }
 
 M.complete = {

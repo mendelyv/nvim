@@ -8,6 +8,7 @@ local icons = require("utils.icons").get_icons("diagnostic", true)
 local M = {
   requires = {
     "lspconfig",
+    "nvim-navic",
     "mason-lspconfig",
   },
   server_configurations_directory = path_util.join("configs", "lsp", "configurations"),
@@ -114,6 +115,7 @@ function M.load()
       configuration.handlers = M.get_handlers(configuration)
       configuration.capabilities = M.get_capabilities(configuration)
       configuration.on_attach = function(client, bufnr)
+        M.nvim_navic.attach(client, bufnr)
         private_on_attach(client, bufnr)
       end
       -- 启用语言服务
