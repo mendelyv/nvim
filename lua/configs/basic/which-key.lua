@@ -32,7 +32,7 @@ function M.after()
     f = { name = "Find" },
     r = { name = "Replace", w = "Replace Word To ..." },
     s = { name = "Session" },
-    h = { name = "hop" },
+    h = { name = "Hop" },
     -- t = {
     --     name = "Terminal",
     --     -- name = "Terminal | Translate",

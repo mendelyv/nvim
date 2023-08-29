@@ -134,6 +134,9 @@ M.editor = {
   },
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
     lazy = true,
   },
   {

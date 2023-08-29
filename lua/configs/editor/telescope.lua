@@ -36,10 +36,19 @@ function M.load()
         },
       },
     },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      },
+    },
   })
 end
 
 function M.after()
+  M.telescope.load_extension("fzf")
 end
 
 function M.register_key()
