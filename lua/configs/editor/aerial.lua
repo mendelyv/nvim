@@ -23,6 +23,11 @@ function M.load()
       min_width = 60,
       default_direction = "float",
       -- max_width = { 40, 0.2 },
+      win_opts = {
+        cursorline = true,
+        number = true,
+        relativenumber = true,
+      },
     },
     lsp = {
       diagnostics_trigger_update = false,
@@ -62,34 +67,34 @@ function M.register_key()
       options = { silent = true },
       description = "Open Outilne Explorer",
     },
-    {
-      mode = { "n" },
-      lhs = "{",
-      rhs = "<cmd>AerialPrev<cr>",
-      options = { silent = true },
-      description = "Move item up",
-    },
-    {
-      mode = { "n" },
-      lhs = "}",
-      rhs = "<cmd>AerialNext<cr>",
-      options = { silent = true },
-      description = "Move item down",
-    },
-    {
-      mode = { "n" },
-      lhs = "[[",
-      rhs = "<cmd>AerialPrevUp<cr>",
-      options = { silent = true },
-      description = "Move up one level",
-    },
-    {
-      mode = { "n" },
-      lhs = "]]",
-      rhs = "<cmd>AerialNextUp<cr>",
-      options = { silent = true },
-      description = "Move down one level",
-    },
+    -- {
+    --   mode = { "n" },
+    --   lhs = "{",
+    --   rhs = "<cmd>AerialPrev<cr>",
+    --   options = { silent = true },
+    --   description = "Move item up",
+    -- },
+    -- {
+    --   mode = { "n" },
+    --   lhs = "}",
+    --   rhs = "<cmd>AerialNext<cr>",
+    --   options = { silent = true },
+    --   description = "Move item down",
+    -- },
+    -- {
+    --   mode = { "n" },
+    --   lhs = "[[",
+    --   rhs = "<cmd>AerialPrevUp<cr>",
+    --   options = { silent = true },
+    --   description = "Move up one level",
+    -- },
+    -- {
+    --   mode = { "n" },
+    --   lhs = "]]",
+    --   rhs = "<cmd>AerialNextUp<cr>",
+    --   options = { silent = true },
+    --   description = "Move down one level",
+    -- },
   })
 end
 

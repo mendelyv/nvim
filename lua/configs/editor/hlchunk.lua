@@ -9,14 +9,14 @@ local M = {
 function M.load()
   M.hlchunk.setup({
     chunk = {
-      enable = true,
+      enable = false,
       style = {
         { fg = "#999999" },
       },
       notify = false,
     },
     indent = {
-      enable = false,
+      enable = true,
       chars = { "┆" }
     },
     line_num = {
