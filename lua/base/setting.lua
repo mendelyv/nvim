@@ -103,6 +103,8 @@ M.opt = {
   -- 分屏时是否自动调整窗口尺寸
   equalalways = false,
   eadirection = "hor",
+  -- 允许调用自定义配置.nvim.lua
+  exrc = true,
 }
 
 for prefix, tbl in pairs(M) do

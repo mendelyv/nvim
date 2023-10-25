@@ -17,7 +17,7 @@ function M.load()
     },
     indent = {
       enable = true,
-      chars = { "┆" }
+      -- chars = { "┆" }
     },
     line_num = {
       enable = false,

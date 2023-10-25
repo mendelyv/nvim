@@ -17,6 +17,8 @@ local M = {
   transparent = true,
   -- 禁用的语言服务
   disabled_language_servers = {},
+  -- telescope忽略
+  telescope_file_ignore_patterns = {},
 }
 
 return M

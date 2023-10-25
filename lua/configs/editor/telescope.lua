@@ -1,6 +1,8 @@
 -- https://github.com/nvim-telescope/telescope.nvim
 
-local keymap = require("utils.keymap");
+local keymap = require("utils.keymap")
+local options = require("base.options")
+
 local M = {
   requires = {
     "telescope",
@@ -19,7 +21,7 @@ function M.load()
       entry_prefix = " ",
       multi_icon = " ",
       color_devicons = true,
-      file_ignore_patterns = { "node_modules" },
+      file_ignore_patterns = options.telescope_file_ignore_patterns,
       -- theme
       layout_strategy = "vertical",
       -- path_display = { "tail" },
