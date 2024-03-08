@@ -38,10 +38,10 @@ function M.load()
       enable = true,
     },
     -- nvim-ts-context-commentstring
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
+    -- context_commentstring = {
+    --   enable = true,
+    --   enable_autocmd = false,
+    -- },
   })
 end
 

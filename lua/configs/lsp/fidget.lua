@@ -9,15 +9,7 @@ local M = {
 function M.before() end
 
 function M.load()
-  M.fidget.setup({
-    window = {
-      blend = 0,
-    },
-    text = {
-      spinner = "meter",
-      done = " ",
-    },
-  })
+  M.fidget.setup()
 end
 
 function M.after() end

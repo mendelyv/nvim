@@ -165,13 +165,21 @@ function M.register_key()
     },
     {
       mode = { "n" },
+      lhs = "gR",
+      rhs = vim.lsp.buf.references,
+      options = { silent = true },
+      description = "Go to references",
+    },
+    {
+      mode = { "n" },
       lhs = "gd",
-      rhs = function()
-        require("telescope.builtin").lsp_definitions({
-          fname_width = 200,
-          show_line = false,
-        })
-      end,
+      -- rhs = function()
+      --   require("telescope.builtin").lsp_definitions({
+      --     fname_width = 200,
+      --     show_line = false,
+      --   })
+      -- end,
+      rhs = vim.lsp.buf.definition,
       options = { silent = true },
       description = "Go to definitions",
     },

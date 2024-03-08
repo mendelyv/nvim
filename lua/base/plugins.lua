@@ -75,7 +75,7 @@ M.lsp = {
   {
     -- LSP进度插件
     "j-hui/fidget.nvim",
-    tag = "legacy",
+    -- tag = "legacy",
     event = { "LspAttach" },
   },
   {
@@ -133,7 +133,6 @@ M.editor = {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       { "windwp/nvim-ts-autotag" },
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
     },
     event = { "UIEnter" },
   },

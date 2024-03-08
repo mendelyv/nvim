@@ -53,6 +53,9 @@ function M.load()
       "Struct",
       "Property",
     },
+    keymaps = {
+      ["o"] = "actions.jump",
+    }
   })
 end
 
