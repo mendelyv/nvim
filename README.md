@@ -81,6 +81,8 @@ _Windows使用需要Cygwin环境_
 
 对应不同项目等，使用.nvim.lua文件覆盖全局配置
 
+[telescope-fzf-native]插件需要手动编译
+
 ## TODO
 上传目前不同语言项目的.nvim.lua模版文件
 
@@ -88,8 +90,11 @@ _Windows使用需要Cygwin环境_
 
 需要支持DAP吗？
 
-<!-- ## Windows常见问题 -->
-<!-- ###  -->
+## Windows常见问题
+### nvim-treesitter
+- 在win11使用默认配置下载编译使用时，会出现编译后的.so文件无法正常运行问题，详细解决方案见<https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support>
+
+
 
 
 [askfiy]: https://github.com/askfiy/nvim
@@ -97,3 +102,4 @@ _Windows使用需要Cygwin环境_
 [Lazy]: https://github.com/folke/lazy.nvim
 [mason]: https://github.com/williamboman/mason.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[telescope-fzf-native]: https://github.com/nvim-telescope/telescope-fzf-native.nvim
