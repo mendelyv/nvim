@@ -8,11 +8,20 @@
 - nodejs
 - c编译器
 - ripgrep
+- python
+- NerdFont(Cousine Nerd Font)
 
 _上述依赖不要忘记配置对应系统的环境变量，尤其是Windows_
 
 ## 安装
 克隆至~/.config
+
+配置nvim别名
+``` shell
+if type nvim > /dev/null 2>1&; then
+    vi=‘nvim'
+fi
+```
 
 _Windows使用需要Cygwin环境_
 
