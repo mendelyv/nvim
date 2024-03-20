@@ -173,13 +173,12 @@ function M.register_key()
     {
       mode = { "n" },
       lhs = "gd",
-      -- rhs = function()
-      --   require("telescope.builtin").lsp_definitions({
-      --     fname_width = 200,
-      --     show_line = false,
-      --   })
-      -- end,
-      rhs = vim.lsp.buf.definition,
+      rhs = function()
+        require("telescope.builtin").lsp_definitions({
+          fname_width = 200,
+          show_line = false,
+        })
+      end,
       options = { silent = true },
       description = "Go to definitions",
     },
