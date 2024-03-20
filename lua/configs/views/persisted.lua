@@ -21,11 +21,18 @@ function M.load()
     -- Windows: ~/AppData/Local/nvim
     save_dir = path_util.join(vim.fn.stdpath("cache"), "sessions"),
     -- use_git_branche = true,
-    command = "VimLeavePre",
-    autosave = true,
-    branch_separator = "_",
-    after_save = function()
-      vim.cmd("nohlsearch")
+    -- command = "VimLeavePre",
+    -- autosave = true,
+    -- branch_separator = "_",
+    -- after_save = function()
+    --   vim.cmd("nohlsearch")
+    -- end,
+    should_autosave = function()
+      -- do not autosave if the alpha dashboard is the current filetype
+      if vim.bo.filetype == "alpha" then
+        return false
+      end
+      return true
     end,
   })
 end

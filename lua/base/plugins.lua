@@ -30,6 +30,9 @@ M.basic = {
 
 M.views = {
   {
+    "goolord/alpha-nvim",
+  },
+  {
     -- 图标
     "nvim-tree/nvim-web-devicons",
     event = { "VimEnter" },
@@ -51,7 +54,11 @@ M.views = {
   {
     "norcalli/nvim-colorizer.lua",
     config = true,
-  }
+  },
+  {
+    "eandrju/cellular-automaton.nvim",
+    event = { "VeryLazy" },
+  },
 }
 
 M.lsp = {
