@@ -14,7 +14,9 @@
 _上述依赖不要忘记配置对应系统的环境变量，尤其是Windows_
 
 ## 安装
-克隆至~/.config
+类Unix系统克隆至~/.config
+
+Windows克隆至AppData/Local
 
 配置nvim别名
 ``` shell
