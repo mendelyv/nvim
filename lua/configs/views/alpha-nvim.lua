@@ -11,6 +11,8 @@ local M = {
 
 function M.load()
   local dashboard = M.alpha_themes_dashboard
+  vim.api.nvim_set_hl(0, "DashboardLogo1", { fg = "#83C092" })
+  dashboard.section.header.opts = { hl = "DashboardLogo1", position = "center" }
   dashboard.section.header.val = {
     [[                                                    ]],
     [[                                                    ]],
@@ -33,10 +35,28 @@ function M.load()
     [[                                                    ]],
     [[                                                    ]],
   }
+  -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo1", { fg = "#DA4939" })
+  -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo2", { fg = "#FF875F" })
+  -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo3", { fg = "#FFC66D" })
+  -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo4", { fg = "#00FF03" })
+  -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo5", { fg = "#00AFFF" })
+  -- vim.api.nvim_set_hl(0, "NeovimDashboardLogo6", { fg = "#8800FF" })
+  --
+  -- dashboard.section.header.type = "group"
+  -- dashboard.section.header.val = {
+  --   { type = "text", val = "   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ", opts = { hl = "NeovimDashboardLogo1", shrink_margin = false, position = "center" } },
+  --   { type = "text", val = "   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ", opts = { hl = "NeovimDashboardLogo2", shrink_margin = false, position = "center" } },
+  --   { type = "text", val = "   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ", opts = { hl = "NeovimDashboardLogo3", shrink_margin = false, position = "center" } },
+  --   { type = "text", val = "   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ", opts = { hl = "NeovimDashboardLogo4", shrink_margin = false, position = "center" } },
+  --   { type = "text", val = "   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ", opts = { hl = "NeovimDashboardLogo5", shrink_margin = false, position = "center" } },
+  --   { type = "text", val = "   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ", opts = { hl = "NeovimDashboardLogo6", shrink_margin = false, position = "center" } },
+  -- }
 
   dashboard.section.buttons.val = {
     dashboard.button("b", " " .. icons.Session .. "> Restore session", "<cmd>silent! SessionLoad<CR>"),
-    dashboard.button("f", " " .. icons.Find .. "> Find File", ":Telescope find_files<CR>"),
+    dashboard.button("f", " " .. icons.Find .. "> Find File", function()
+      require("telescope.builtin").find_files()
+    end),
     dashboard.button("n", " " .. icons.NewFile .. "> New File", ":ene <BAR> startinsert <CR>"),
     dashboard.button("p", " " .. icons.Lazy .. "> Lazy", ":Lazy<CR>"),
     dashboard.button("q", " " .. icons.Quit .. "> Quit Neovim", ":qa<CR>"),
