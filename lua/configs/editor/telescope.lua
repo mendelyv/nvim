@@ -121,12 +121,21 @@ function M.register_key()
     },
     {
       mode = { "n" },
-      lhs = "<leader>fm",
+      lhs = "<leader>f\'",
       rhs = function()
         require("telescope.builtin").marks()
       end,
       options = { silent = true },
       description = "Find marks in the current workspace",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>f\"",
+      rhs = function()
+        require("telescope.builtin").registers()
+      end,
+      options = { silent = true },
+      description = "Show all registers",
     },
     {
       mode = { "n" },
