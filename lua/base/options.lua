@@ -19,6 +19,15 @@ local M = {
   disabled_language_servers = {},
   -- telescope忽略
   telescope_file_ignore_patterns = {},
+  -- 补全源
+  nvim_cmp_sources = {
+    { name = "luasnip" },
+    { name = "nvim_lsp" },
+    { name = "path" },
+    { name = "buffer" },
+    { name = "cmp_tabnine" },
+    { name = "vim-dadbod-completion" },
+  }
 }
 
 return M

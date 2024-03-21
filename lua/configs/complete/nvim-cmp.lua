@@ -5,6 +5,7 @@
 -- https://github.com/tzachar/cmp-tabnin
 
 local icons = require("utils.icons").get_icons("lsp_kind", false)
+local options = require("base.options")
 
 local M = {
   requires = {
@@ -46,14 +47,7 @@ function M.load()
       end,
     },
     -- 定义补全源
-    sources = M.cmp.config.sources({
-      { name = "luasnip" },
-      { name = "nvim_lsp" },
-      { name = "path" },
-      { name = "buffer" },
-      { name = "cmp_tabnine" },
-      { name = "vim-dadbod-completion" },
-    }),
+    sources = options.nvim_cmp_sources;
     mapping = {
       ["<cr>"] = M.confirm(),
       ["<c-p>"] = M.select_prev_item(),
