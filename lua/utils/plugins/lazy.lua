@@ -6,7 +6,14 @@ local options = require("base.options")
 local common = require("utils.common")
 
 local M = {
-  plugin_config_root_directory = "configs"
+  plugin_config_root_directory = "configs",
+  -- 忽略检测配置日志
+  ignore_plugin_configs = {
+    ["nvim-autopairs"] = true,
+    ["nvim-web-devicons"] = true,
+    ["cellular-automaton"] = true,
+    ["plenary"] = true,
+  },
 }
 
 -- 获取Lazy配置，详情见help或github
@@ -77,7 +84,9 @@ function M.load(plugins)
         end
       else
         if options.debug then
-          vim.print(file_name .. '配置加载失败，插件配置路径' .. config_file_path)
+          if not M.ignore_plugin_configs[file_name] then
+            vim.print(file_name .. '配置加载失败，插件配置路径' .. config_file_path)
+          end
         end
       end
       table.insert(load_modules, plugin_options)
