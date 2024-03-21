@@ -61,6 +61,14 @@ M.lsp_kind = {
   TypeParameter = "",
 }
 
+M.dashboard = {
+  Session = "󰃨",
+  Find = "󰍉",
+  NewFile = "",
+  Lazy = "󰒲",
+  Quit = "",
+}
+
 -- 获取图标分组
 -- space 是否需要整体添加空格
 function M.get_icons(group_name, space)
