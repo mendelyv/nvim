@@ -24,7 +24,15 @@ function M.load()
       file_ignore_patterns = options.telescope_file_ignore_patterns,
       -- theme
       layout_strategy = "vertical",
-      -- path_display = { "tail" },
+      layout_config = {
+        vertical = {
+          preview_height = 0.6,
+        },
+        flex = {
+          flip_columns = 120,
+        },
+      },
+      path_display = { "smart" },
     },
     pickers = {
       buffers = {
@@ -51,6 +59,17 @@ end
 
 function M.after()
   M.telescope.load_extension("fzf")
+
+  -- 预览界面内容换行
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "TelescopePreviewerLoaded",
+    callback = function()
+      vim.wo.wrap = true
+    end
+  })
+
+  -- 预览界面开启行号
+  vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
 end
 
 function M.register_key()
