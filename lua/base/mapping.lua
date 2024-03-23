@@ -17,6 +17,13 @@ map_util.register_all({
     options = { silent = true },
     description = "Clear search hightlight",
   },
+  {
+    mode = { "n" },
+    lhs = "<c-w>a",
+    rhs = "<c-w>_<c-w>|",
+    options = { silent = true },
+    description = "Full screen current buffer",
+  },
 })
 
 return M
