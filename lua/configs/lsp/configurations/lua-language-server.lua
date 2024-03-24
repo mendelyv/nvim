@@ -18,11 +18,11 @@ return {
     ---@diagnostic disable-next-line: deprecated
     return util.root_pattern(unpack(root_files))(fname)
   end,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
+  -- settings = {
+  --   Lua = {
+  --     diagnostics = {
+  --       globals = { "vim" },
+  --     },
+  --   },
+  -- },
 }

@@ -1,0 +1,40 @@
+-- https://github.com/lukas-reineke/indent-blankline.nvim
+
+local M = {
+  requires = {
+    "ibl",
+  },
+}
+
+function M.after()
+  vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = "#B5B5B5" })
+end
+
+function M.load()
+  M.ibl.setup({
+    indent = {
+      char = "┆",
+    },
+    scope = {
+      enabled = true,
+      char = "│",
+    },
+    exclude = {
+      filetypes = {
+        "help",
+        "alpha",
+        "dashboard",
+        "neo-tree",
+        "Trouble",
+        "trouble",
+        "lazy",
+        "mason",
+        "notify",
+        "toggleterm",
+        "lazyterm",
+      },
+    },
+  })
+end
+
+return M

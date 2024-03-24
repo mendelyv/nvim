@@ -7,6 +7,8 @@ local icons = require("utils.icons").get_icons("diagnostic", true)
 
 local M = {
   requires = {
+    "neodev",
+    -- "neoconf",
     "lspconfig",
     "nvim-navic",
     "mason-lspconfig",
@@ -89,6 +91,12 @@ end
 function M.load()
   M.lsp_basic_init()
   M.lsp_diagnostic_init()
+  M.neodev.setup({
+    override = function (root_dir, library)
+      library.enabled = true
+      library.plugins = true
+    end,
+  })
 
   -- 获取lspconfig和mason对语言服务的名称映射
   local mappings = M.mason_lspconfig.get_mappings()

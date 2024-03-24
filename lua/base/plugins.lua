@@ -72,6 +72,8 @@ M.lsp = {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
+      -- { "folke/neoconf.nvim" },
+      { "folke/neodev.nvim" },
     },
   },
   {
@@ -122,8 +124,7 @@ M.editor = {
     "nvim-tree/nvim-tree.lua",
   },
   {
-    "shellRaining/hlchunk.nvim",
-    event = { "UIEnter" },
+    "lukas-reineke/indent-blankline.nvim",
   },
   {
     -- 光标文本高亮
