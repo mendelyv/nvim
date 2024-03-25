@@ -125,6 +125,12 @@ M.editor = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = { "VeryLazy" },
+  },
+  {
+    "echasnovski/mini.indentscope",
+    name = "mini-indentscope",
+    event = { "VeryLazy" },
   },
   {
     -- 光标文本高亮

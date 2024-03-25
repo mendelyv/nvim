@@ -8,12 +8,13 @@ local M = {
 
 function M.after()
   vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = "#B5B5B5" })
+  -- vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = "#A7C082" })
 end
 
 function M.load()
   M.ibl.setup({
     indent = {
-      char = "┆",
+      char = " ",
     },
     scope = {
       enabled = true,
