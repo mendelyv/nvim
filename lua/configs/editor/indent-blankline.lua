@@ -14,10 +14,12 @@ end
 function M.load()
   M.ibl.setup({
     indent = {
-      char = " ",
+      char = "┊",
     },
     scope = {
       enabled = true,
+      show_start = false,
+      show_end = false,
       char = "│",
     },
     exclude = {

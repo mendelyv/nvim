@@ -59,6 +59,7 @@ end
 
 function M.after()
   M.telescope.load_extension("fzf")
+  M.telescope.load_extension("yank_history")
 
   -- 预览界面内容换行
   vim.api.nvim_create_autocmd("User", {

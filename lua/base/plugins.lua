@@ -191,6 +191,10 @@ M.editor = {
     "nvim-pack/nvim-spectre",
     lazy = true,
   },
+  {
+    "gbprod/yanky.nvim",
+    event = { "VeryLazy" },
+  },
 }
 
 lazy.entry(M)

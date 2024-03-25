@@ -1,3 +1,5 @@
+-- https://github.com/echasnovski/mini.indentscope
+
 local M = {
   requires = {
     "mini.indentscope",
