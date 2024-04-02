@@ -29,6 +29,9 @@ end
 
 function M.load()
   M.mini_indentscope.setup({
+    draw = {
+      animation = require("mini.indentscope").gen_animation.none()
+    },
     symbol = "│",
   })
 end

@@ -29,6 +29,7 @@ function M.load()
       },
       diagnostics = "nvim_lsp",
       max_name_length = 30,
+      always_show_bufferline = false,
       ---@diagnostic disable-next-line: unused-local
       -- 设置LSP检测图标，只显示警告和错误
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
