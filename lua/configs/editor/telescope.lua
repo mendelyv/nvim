@@ -174,6 +174,24 @@ function M.register_key()
       options = { silent = true },
       description = "Find all command history",
     },
+    {
+      mode = { "n" },
+      lhs = "<leader>fs",
+      rhs = function()
+        require("telescope.builtin").lsp_document_symbols()
+      end,
+      options = { silent = true },
+      description = "Find symbols in the current buffer",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>fS",
+      rhs = function()
+        require("telescope.builtin").lsp_workspace_symbols()
+      end,
+      options = { silent = true },
+      description = "Find symbols in the current workspace",
+    },
   })
 end
 
