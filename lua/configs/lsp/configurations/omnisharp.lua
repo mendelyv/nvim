@@ -10,11 +10,12 @@ local root_files = {
 }
 
 return {
+  cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
   root_dir = function(fname)
     ---@diagnostic disable-next-line: deprecated
     return util.root_pattern(unpack(root_files))(fname)
   end,
-  handlers = {
-    ["textDocument/definition"] = require("omnisharp_extended").handler,
-  },
+  -- handlers = {
+  --   ["textDocument/definition"] = require("omnisharp_extended").handler,
+  -- },
 }

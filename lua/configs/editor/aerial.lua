@@ -55,7 +55,8 @@ function M.load()
     },
     keymaps = {
       ["o"] = "actions.jump",
-    }
+      ["<c-[>"] = "actions.close",
+    },
   })
 end
 
