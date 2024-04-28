@@ -1,5 +1,10 @@
 local M = {}
 
+--- 是否windows系统
+function M.is_windows()
+  return vim.uv.os_uname().sysname:find("Windows") ~= nil
+end
+
 -- 加载插件依赖包，注意需要插件配置模块reqiures字段
 function M.require_packages(module)
   if not module.requires then

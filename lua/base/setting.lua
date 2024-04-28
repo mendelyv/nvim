@@ -41,7 +41,7 @@ M.opt = {
   -- 设置是否开启相对行号（行标）
   relativenumber = true,
   -- 设置在光标接近屏幕顶部或底部时，文本内容滚动的行数偏移量
-  scrolloff = 21,
+  scrolloff = 10,
   -- 启用或禁用鼠标支持的模式
   mouse = "",
   -- 显示不可见字符（invisible characters）的设置
