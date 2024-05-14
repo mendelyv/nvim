@@ -16,7 +16,7 @@ end
 function M.load()
   M.nvim_tree.setup({
     view = {
-      width = 60,
+      width = { min = 30, max = -1 },
       side = "left",
       number = true,
       relativenumber = true,
