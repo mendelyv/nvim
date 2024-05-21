@@ -8,6 +8,7 @@ M.theme = {
     -- 优先级
     priority = 100,
   }
+  },
 }
 
 M.basic = {
@@ -25,6 +26,9 @@ M.basic = {
     -- key binding map
     "folke/which-key.nvim",
     event = { "VeryLazy" },
+  },
+  {
+    "LunarVim/bigfile.nvim",
   },
 }
 
