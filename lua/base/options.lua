@@ -19,6 +19,10 @@ local M = {
   disabled_language_servers = {},
   -- telescope忽略
   telescope_file_ignore_patterns = {},
+  -- nvim-tree忽略，配置这个字段时需要reload一下nvim-tree插件
+  nvim_tree_filters_custom = {
+    "*.DS_Store",
+  },
   -- 补全源
   nvim_cmp_sources = {
     { name = "luasnip" },

@@ -2,19 +2,13 @@
 
 local keymap = require("utils.keymap")
 local icons = require("utils.icons").get_icons("diagnostic", false)
+local options = require("base.options")
 
 local M = {
   requires = {
     "nvim-tree",
   },
-}
-
-function M.before()
-  M.register_keys()
-end
-
-function M.load()
-  M.nvim_tree.setup({
+  options = {
     view = {
       width = { min = 30, max = -1 },
       side = "left",
@@ -33,11 +27,9 @@ function M.load()
       enable = false,
     },
     filters = {
+      git_ignored = false,
       dotfiles = false,
-      custom = {
-        "*.meta",
-        "*.DS_Store",
-      },
+      custom = options.nvim_tree_filters_custom,
     },
     actions = {
       use_system_clipboard = true,
@@ -45,7 +37,20 @@ function M.load()
         window_picker = { enable = true },
       },
     },
-  })
+  },
+}
+
+function M.before()
+  M.register_keys()
+end
+
+function M.load()
+  M.nvim_tree.setup(M.options)
+end
+
+function M.reload()
+  M.nvim_tree = require("nvim-tree")
+  M.load()
 end
 
 function M.register_keys()
