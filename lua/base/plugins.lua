@@ -7,7 +7,6 @@ M.theme = {
     "sainnhe/everforest",
     -- 优先级
     priority = 100,
-  }
   },
 }
 
@@ -78,6 +77,7 @@ M.lsp = {
       { "williamboman/mason-lspconfig.nvim" },
       -- { "folke/neoconf.nvim" },
       { "folke/neodev.nvim" },
+      { "Hoffs/omnisharp-extended-lsp.nvim" },
     },
   },
   {
