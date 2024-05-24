@@ -29,57 +29,21 @@ _Windows使用需要Cygwin环境_
 
 ## 文件结构
 ```
-├── ftplugin
-├── init.lua
-├── lua
-│   ├── base
-│   │   ├── mapping.lua
-│   │   ├── options.lua
-│   │   ├── plugins.lua
-│   │   └── setting.lua
-│   ├── configs
-│   │   ├── basic
-│   │   │   ├── nvim-notify.lua
-│   │   │   └── which-key.lua
-│   │   ├── complete
-│   │   │   ├── luasnip.lua
-│   │   │   └── nvim-cmp.lua
-│   │   ├── editor
-│   │   │   ├── aerial.lua
-│   │   │   ├── comment.lua
-│   │   │   ├── flash.lua
-│   │   │   ├── hlchunk.lua
-│   │   │   ├── neogen.lua
-│   │   │   ├── nvim-spectre.lua
-│   │   │   ├── nvim-tree.lua
-│   │   │   ├── nvim-treesitter.lua
-│   │   │   ├── surround.lua
-│   │   │   ├── symbols-outline.lua
-│   │   │   ├── telescope.lua
-│   │   │   ├── todo-comments.lua
-│   │   │   └── vim-illuminate.lua
-│   │   ├── lsp
-│   │   │   ├── configurations
-│   │   │   ├── fidget.lua
-│   │   │   ├── formatter.lua
-│   │   │   ├── mason.lua
-│   │   │   ├── nvim-lspconfig.lua
-│   │   │   └── nvim-navic.lua
-│   │   ├── theme
-│   │   │   └── everforest.lua
-│   │   └── views
-│   │       ├── bufferline.lua
-│   │       ├── lualine.lua
-│   │       ├── nvim-colorizer.lua
-│   │       └── persisted.lua
-│   └── utils
-│       ├── common.lua
-│       ├── icons.lua
-│       ├── keymap.lua
-│       ├── path.lua
-│       └── plugins
-│           └── lazy.lua
-└── snippets
+├─ftplugin
+├─lua
+│  ├─base
+│  ├─configs
+│  │  ├─basic
+│  │  ├─complete
+│  │  ├─editor
+│  │  ├─lsp
+│  │  │  └─configurations
+│  │  ├─theme
+│  │  └─views
+│  └─utils
+│      └─plugins
+├─snippets
+└─workspace-config-templates
 ```
 - base文件夹存放基础配置，vim设置settings，按键映射mapping，插件启动选项options
 - 插件管理器使用[Lazy]，详细设置以及插件安装脚本lazy.lua，对应插件作用见plugins.lua
@@ -94,8 +58,15 @@ _Windows使用需要Cygwin环境_
 
 [telescope-fzf-native]插件需要手动编译
 
+## 自定义工作区
+需要在工程的根目录创建.nvim.lua文件，这个文件的生命周期是在neovim加载完之后，非懒加载的插件如要改配置需要添加相应的reload方法，详情见.nvim.unity.lua文件如何处理的nvim-tree插件
+
 ## TODO
 上传目前不同语言项目的.nvim.lua模版文件
+- 已上传
+    - typescript
+    - csharp
+    - unity
 
 需要加入Inlay-Hints吗？
 
@@ -103,7 +74,7 @@ _Windows使用需要Cygwin环境_
 
 ## Windows常见问题
 ### nvim-treesitter
-- 在win11使用默认配置下载编译使用时，会出现编译后的.so文件无法正常运行问题，详细解决方案见<https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support>
+- 在win使用默认配置下载编译使用时，会出现编译后的.so文件无法正常运行问题，详细解决方案见<https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support>
 
 
 

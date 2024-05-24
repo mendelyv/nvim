@@ -92,7 +92,7 @@ function M.load()
   M.lsp_basic_init()
   M.lsp_diagnostic_init()
   M.neodev.setup({
-    override = function (root_dir, library)
+    override = function(root_dir, library)
       library.enabled = true
       library.plugins = true
     end,
@@ -241,11 +241,11 @@ function M.show_line_diagnostic()
 end
 
 function M.goto_prev_diagnostic()
-  vim.diagnostic.goto_prev({ float = { border = options.float_border and "rounded" or "none" } })
+  vim.diagnostic.goto_prev({ float = { border = options.float_border and "rounded" or "none" }, _highest = true })
 end
 
 function M.goto_next_diagnostic()
-  vim.diagnostic.goto_next({ float = { border = options.float_border and "rounded" or "none" } })
+  vim.diagnostic.goto_next({ float = { border = options.float_border and "rounded" or "none" }, _highest = true })
 end
 
 function M.get_handlers(settings)
