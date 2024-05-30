@@ -18,11 +18,6 @@ function M.load()
 end
 
 function M.after()
-  if common.is_windows() then
-    vim.cmd [[let &shell = '"C:\Program Files\Git\bin\bash.exe"']]
-    vim.cmd [[let &shellcmdflag = '-s']]
-  end
-
   local Terminal = require('toggleterm.terminal').Terminal
   M.lazygit = Terminal:new({
     cmd = "lazygit",
