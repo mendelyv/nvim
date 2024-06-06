@@ -22,7 +22,7 @@ function M.load()
         template = {
           annotation_convention = "tsdoc",
           tsdoc = {
-            { nil,            "/* $1 */",             { no_results = true, type = { "func", "class" } } },
+            { nil,            "/** $1 */",             { no_results = true, type = { "func", "class" } } },
             { nil,            "/* @type $1 */",       { no_results = true, type = { "type" } } },
             { nil,            "/**",                  { no_results = true, type = { "file" } } },
             { nil,            " * @module $1",        { no_results = true, type = { "file" } } },
@@ -46,7 +46,7 @@ function M.load()
         template = {
           annotation_convention = "jsdoc",
           jsdoc = {
-            { nil, "/* $1 */",       { no_results = true, type = { "func", "class" } } },
+            { nil, "/** $1 */",       { no_results = true, type = { "func", "class" } } },
             { nil, "/* @type $1 */", { no_results = true, type = { "type" } } },
             { nil, "/**",            { no_results = true, type = { "file" } } },
             { nil, " * @module $1",  { no_results = true, type = { "file" } } },
