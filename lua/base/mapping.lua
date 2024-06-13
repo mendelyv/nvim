@@ -24,6 +24,12 @@ map_util.register_all({
     options = { silent = true },
     description = "Full screen current buffer",
   },
+  {
+    mode = { "n", "v" },
+    lhs = "d",
+    rhs = '"_d',
+    options = { noremap = true },
+  },
 })
 
 return M
