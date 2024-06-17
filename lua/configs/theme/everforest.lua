@@ -10,8 +10,20 @@ function M.load()
   --   grey1 = {"#00ff00", "245"},
   --   grey2 = {"#0000ff", "247"},
   -- }
-  vim.cmd [[colorscheme everforest]]
-  vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#B5B5B5", bold = true, italic = true })
+  vim.cmd([[
+      " autocmd ColorScheme * hi NormalFloat guifg=#F9E7C0 guibg=#333c43
+      " autocmd ColorScheme * hi FloatBorder guifg=#F9E7C0 guibg=#333c43
+      " autocmd ColorScheme * hi FloatBorder guifg=#6e7a75 guibg=#333c43
+      " autocmd ColorScheme * hi NormalFloat guifg=#d3c6aa guibg=#333c43
+      autocmd ColorScheme * hi NormalFloat guibg=#333c43
+      autocmd ColorScheme * hi FloatBorder guifg=#859289 guibg=#333c43
+    ]]);
+
+  vim.cmd.colorscheme("everforest")
+
+  vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#DCA561", bold = true, })
+  -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#F9E7C0", bold = true, })
+  -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FF9E3B", bold = true, })
 end
 
 return M
