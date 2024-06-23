@@ -19,6 +19,9 @@ end
 function M.load()
   M.mason.setup({
     install_root_dir = options.mason_install_directory,
+    ui = {
+      border = options.float_border and "rounded" or "none",
+    }
   })
 end
 
