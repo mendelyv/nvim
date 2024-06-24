@@ -1,5 +1,7 @@
 -- https://github.com/folke/which-key.nvim
 
+local options = require("base.options")
+
 local M = {
   requires = {
     "which-key",
@@ -19,7 +21,10 @@ function M.load()
     icons = {
       separator = '󱚃 ',
       group = "󰉺 ",
-    }
+    },
+    window = {
+      border = options.float_border and "single" or "none",
+    },
   })
 end
 
