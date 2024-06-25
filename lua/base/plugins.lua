@@ -27,13 +27,17 @@ M.basic = {
     event = { "VeryLazy" },
   },
   {
+    -- 大文件开启插件
     "LunarVim/bigfile.nvim",
+    event = { "UIEnter" },
   },
 }
 
 M.views = {
   {
+    -- launcher
     "goolord/alpha-nvim",
+    event = { "VimEnter" },
   },
   {
     -- 图标
@@ -46,6 +50,7 @@ M.views = {
     event = { "UIEnter" },
   },
   {
+    -- buffer栏
     "akinsho/bufferline.nvim",
     event = { "UIEnter" },
   },
@@ -55,18 +60,21 @@ M.views = {
     event = { "VeryLazy" },
   },
   {
+    -- 色值显示
     "norcalli/nvim-colorizer.lua",
     config = true,
+    event = { "VeryLazy" },
   },
   {
+    -- 单词舞蹈，乱玩的插件
     "eandrju/cellular-automaton.nvim",
-    event = { "VeryLazy" },
+    lazy = true,
   },
 }
 
 M.lsp = {
   {
-    -- 语言服务管理器
+    -- 语言服务包管理器
     "williamboman/mason.nvim",
     event = { "VimEnter" },
   },
@@ -91,11 +99,11 @@ M.lsp = {
     -- tag = "legacy",
     event = { "LspAttach" },
   },
-  {
-    -- 导航栏插件
-    "SmiteshP/nvim-navic",
-    lazy = true,
-  },
+  -- {
+  --   -- 导航栏插件
+  --   "SmiteshP/nvim-navic",
+  --   lazy = true,
+  -- },
 }
 
 M.complete = {
@@ -113,6 +121,7 @@ M.complete = {
     event = { "InsertEnter", "CmdlineEnter" },
   },
   {
+    -- 代码块
     "L3MON4D3/LuaSnip",
     -- in nvim-cmp config file require luasnip
     lazy = true,
@@ -120,18 +129,25 @@ M.complete = {
       { "rafamadriz/friendly-snippets" },
     },
   },
+  {
+    'luozhiya/fittencode.nvim',
+    event = { 'VeryLazy' },
+  },
 }
 
 M.editor = {
   {
     -- 文件树
     "nvim-tree/nvim-tree.lua",
+    event = { "VimEnter" },
   },
   {
+    -- 缩进线
     "lukas-reineke/indent-blankline.nvim",
     event = { "VeryLazy" },
   },
   {
+    -- 缩进线
     "echasnovski/mini.indentscope",
     name = "mini-indentscope",
     event = { "VeryLazy" },
@@ -148,6 +164,7 @@ M.editor = {
     event = { "InsertEnter" },
   },
   {
+    -- 语法树
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       { "windwp/nvim-ts-autotag" },
@@ -155,6 +172,7 @@ M.editor = {
     event = { "UIEnter" },
   },
   {
+    -- 搜索整合插件
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -162,10 +180,12 @@ M.editor = {
     lazy = true,
   },
   {
+    -- 光标跳转(其实功能很多 =.= )
     "folke/flash.nvim",
     event = "VeryLazy",
   },
   {
+    -- 注释插件
     "numToStr/Comment.nvim",
     dependencies = {
       { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -173,6 +193,7 @@ M.editor = {
     event = { "VeryLazy" },
   },
   {
+    -- 成对符号快速操作
     "ur4ltz/surround.nvim",
     dependencies = {
       { "tpope/vim-repeat" },
@@ -180,6 +201,7 @@ M.editor = {
     event = { "VeryLazy" },
   },
   {
+    -- 代码签名生成
     "danymat/neogen",
     dependencies = {
       { "nvim-treesitter/nvim-treesitter" },
@@ -188,14 +210,17 @@ M.editor = {
     lazy = true,
   },
   {
+    -- 大纲插件
     "stevearc/aerial.nvim",
-    event = { "UIEnter" },
+    event = { "VeryLazy" },
   },
   {
+    -- 全局替换
     "nvim-pack/nvim-spectre",
     lazy = true,
   },
   {
+    -- 增强复制
     "gbprod/yanky.nvim",
     event = { "VeryLazy" },
   },
