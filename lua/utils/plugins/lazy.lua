@@ -25,7 +25,8 @@ function M.get_options()
       colorscheme = { "desert" },
     },
     ui = {
-      border = options.float_border and "double" or "none",
+      backdrop = 100,
+      border = options.float_border and "single" or "none",
     }
   }
 end
