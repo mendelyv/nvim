@@ -48,6 +48,26 @@ function M.load()
         return message
       end,
     },
+    -- [[
+    --    if want to use custom windowsterminal everforest colorscheme
+    --    should use these codes to adapte theme
+    -- ]]
+    -- highlights = {
+    --   fill = {
+    --     bg = "#333c43",
+    --   },
+    --   background = {
+    --     bg = "#333c43",
+    --   },
+    --   close_button = {
+    --     fg = "#333c43",
+    --     bg = "#333c43",
+    --   },
+    --   buffer_selected = {
+    --     -- fg = "#333c43",
+    --     bg = "#333c43",
+    --   },
+    -- },
   })
 end
 
