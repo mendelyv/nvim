@@ -192,6 +192,15 @@ function M.register_key()
       options = { silent = true },
       description = "Find symbols in the current workspace",
     },
+    {
+      mode = { "n" },
+      lhs = "<leader>afk",
+      rhs = function()
+        require("telescope.builtin").keymaps()
+      end,
+      options = { silent = true },
+      description = "Find keyboard shortcut",
+    },
   })
 end
 

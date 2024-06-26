@@ -64,6 +64,15 @@ function M.register_keys()
       options = { silent = true },
       description = "Open file explorer",
     },
+    {
+      mode = { "n" },
+      lhs = "<leader>af1",
+      rhs = function()
+        require("nvim-tree.api").tree.find_file({ open = true, focus = true, })
+      end,
+      options = { silent = true },
+      description = "Focus the opened file",
+    },
   })
 end
 
