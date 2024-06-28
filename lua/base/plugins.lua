@@ -194,10 +194,7 @@ M.editor = {
   },
   {
     -- 成对符号快速操作
-    "ur4ltz/surround.nvim",
-    dependencies = {
-      { "tpope/vim-repeat" },
-    },
+    "kylechui/nvim-surround",
     event = { "VeryLazy" },
   },
   {

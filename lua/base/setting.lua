@@ -102,7 +102,7 @@ M.opt = {
   sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals",
   -- 分屏时是否自动调整窗口尺寸
   equalalways = false,
-  eadirection = "hor",
+  eadirection = "ver",
   -- 允许调用自定义配置.nvim.lua
   exrc = true,
 }
