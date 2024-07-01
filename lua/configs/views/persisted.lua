@@ -62,7 +62,7 @@ function M.register_key()
       mode = { "n" },
       lhs = "<leader>sd",
       rhs = function()
-        local ok, _ = pcall(vim.cmd, "SessionDelete")
+        local ok, _ = pcall(function() return vim.cmd end, "SessionDelete")
         if ok then
           vim.api.nvim_echo({ { "Session deleted success", "MoreMsg" } }, true, {})
         else

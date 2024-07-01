@@ -66,7 +66,7 @@ function M.lsp_diagnostic_init()
       -- disable = true,
       prefix = "●",
       -- 是否总是显示前缀
-      source = "always",
+      -- source = "always",
       severity = {
         -- 诊断的级别，可选项：'error', 'warning', 'info', 'hint'
         min = vim.diagnostic.severity.ERROR,
@@ -74,7 +74,7 @@ function M.lsp_diagnostic_init()
     },
     float = {
       -- 是否显示诊断来源
-      source = "always",
+      -- source = "always",
     },
     -- 在插入模式下是否显示诊断
     update_in_insert = false,
@@ -111,9 +111,7 @@ function M.load()
     -- 将默认的LSP服务配置跟加载后的配置，同名键会被覆盖
     -- 给一个默认的on_attach函数，若语言服务配置文件未指定，则使用默认函数
     configuration = vim.tbl_deep_extend("force", {
-      ---@diagnostic disable-next-line: unused-local
       on_init = function(client, bufnr) end,
-      ---@diagnostic disable-next-line: unused-local
       on_attach = function(client, bufnr) end,
     }, ok and configuration or {})
 

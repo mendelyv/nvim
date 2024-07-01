@@ -15,7 +15,6 @@ function M.load()
     show_guides = true,
     backends = { "lsp", "treesitter", "markdown" },
     update_events = "TextChanged,InsertLeave",
-    ---@diagnostic disable-next-line: unused-local
     on_attach = function(bufnr)
       M.register_key()
     end,

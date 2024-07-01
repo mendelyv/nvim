@@ -12,7 +12,6 @@ local root_files = {
 return {
   cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
   root_dir = function(fname)
-    ---@diagnostic disable-next-line: deprecated
     return util.root_pattern(unpack(root_files))(fname)
   end,
   -- For go_to_definition to work fully, extended textDocument/definition handler is needed

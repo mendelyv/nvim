@@ -1,8 +1,6 @@
 -- https://github.com/williamboman/mason.nvim
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 
----@diagnostic disable: param-type-mismatch
-
 local options = require("base.options")
 
 local M = {

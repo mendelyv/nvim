@@ -176,7 +176,6 @@ end
 function M.select_prev_n_item(n)
   return M.cmp.mapping(function(fallback)
     if M.cmp.visible() then
-      ---@diagnostic disable-next-line: unused-local
       for i = 1, n, 1 do
         M.cmp.select_prev_item({ behavior = M.cmp.SelectBehavior.Select })
       end
@@ -189,7 +188,6 @@ end
 function M.select_next_n_item(n)
   return M.cmp.mapping(function(fallback)
     if M.cmp.visible() then
-      ---@diagnostic disable-next-line: unused-local
       for i = 1, n, 1 do
         M.cmp.select_next_item({ behavior = M.cmp.SelectBehavior.Select })
       end

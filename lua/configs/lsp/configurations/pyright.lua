@@ -22,7 +22,6 @@ return {
   filetypes = { "python" },
   single_file_support = true,
   cmd = { "pyright-langserver", "--stdio" },
-  ---@diagnostic disable-next-line: deprecated
   root_dir = util.root_pattern(unpack(root_files)),
   handlers = {
     -- If you want to disable pyright's diagnostic prompt, open the code below
