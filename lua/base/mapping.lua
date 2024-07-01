@@ -30,6 +30,36 @@ map_util.register_all({
     rhs = '"_d',
     options = { noremap = true },
   },
+  {
+    mode = { "n" },
+    lhs = "<c-q>",
+    rhs = "<cmd>bdelete<cr>",
+    options = { silent = true },
+    description = "Close current buffer",
+  },
+  {
+    mode = { "n" },
+    lhs = "<c-l>",
+    rhs = "<cmd>bnext<cr>",
+    options = { silent = true },
+    description = "Go to right buffer",
+  },
+  {
+    mode = { "n" },
+    lhs = "<c-h>",
+    rhs = "<cmd>bprevious<cr>",
+    options = { silent = true },
+    description = "Go to left buffer",
+  },
+  {
+    mode = { "n" },
+    lhs = "<leader>bo",
+    rhs = function()
+      require("utils.buffer").close_other()
+    end,
+    options = { silent = true },
+    description = "Close all other buffers",
+  },
 })
 
 return M

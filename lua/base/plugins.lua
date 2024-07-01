@@ -49,11 +49,11 @@ M.views = {
     "nvim-lualine/lualine.nvim",
     event = { "UIEnter" },
   },
-  {
-    -- buffer栏
-    "akinsho/bufferline.nvim",
-    event = { "UIEnter" },
-  },
+  -- {
+  --   -- buffer栏
+  --   "akinsho/bufferline.nvim",
+  --   event = { "UIEnter" },
+  -- },
   {
     -- session管理器
     "olimorris/persisted.nvim",
