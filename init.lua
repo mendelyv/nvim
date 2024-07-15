@@ -21,5 +21,5 @@ if common.is_windows() then
 end
 
 require("base.setting")
-require("base.mapping")
 require("base.plugins")
+require("base.mapping")

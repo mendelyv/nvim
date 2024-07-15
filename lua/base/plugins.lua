@@ -153,6 +153,10 @@ M.editor = {
     event = { "VeryLazy" },
   },
   {
+    "echasnovski/mini.icons",
+    version = false,
+  },
+  {
     -- 光标文本高亮
     "RRethy/vim-illuminate",
     event = { "UIEnter" },

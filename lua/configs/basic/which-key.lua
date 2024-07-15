@@ -19,10 +19,9 @@ function M.load()
       },
     },
     icons = {
-      separator = '󱚃 ',
       group = "󰉺 ",
     },
-    window = {
+    win = {
       border = options.float_border and "single" or "none",
     },
   })
@@ -30,54 +29,24 @@ end
 
 function M.after()
   -- global leader
-  M.which_key.register({
-    a = { name = "Auxiliaries", f = "Find ..." },
-    b = { name = "Buffers" },
-    c = { name = "Code" },
-    d = { name = "Debug" },
-    f = { name = "Find" },
-    r = { name = "Replace", w = "Replace Word To ..." },
-    s = { name = "Session" },
-    h = { name = "Hop" },
-    -- t = {
-    --     name = "Terminal",
-    --     -- name = "Terminal | Translate",
-    --     -- c = "Translate English to Chinese",
-    --     -- e = "Translate Chinese to English",
-    -- },
-    n = { name = "Neogen" },
-  }, { prefix = "<leader>", mode = "n" })
+  M.which_key.add({
+    { "<leader>af", group = "Find ...", },
+    { "<leader>b",  group = "Buffers" },
+    { "<leader>c",  group = "Code" },
+    { "<leader>d",  group = "Debug" },
+    { "<leader>f",  group = "Find" },
+    { "<leader>h",  group = "Hop", },
+    { "<leader>n",  group = "Neogen", },
+    { "<leader>r",  group = "Replace", },
+    { "<leader>rw", desc = "Replace Word To ..." },
+    { "<leader>s",  group = "Session" },
+  })
 
   -- comment
-  -- M.which_key.register({
-  --   c = {
-  --     name = "Comment",
-  --     c = "Toggle line comment",
-  --     b = "Toggle block comment",
-  --     a = "Insert line comment to line end",
-  --     j = "Insert line comment to next line",
-  --     k = "Insert line comment to previous line",
-  --   },
-  -- }, { prefix = "g", mode = "n" })
-
-  -- M.which_key.register({
-  --   c = "Switch the specified line to a line comment",
-  --   b = "Switch the specified line to a block comment",
-  -- }, { prefix = "g", mode = "v" })
-
-  -- surround
-  M.which_key.register({
-    q = "Switch Surround",
-    s = "Change Surround",
-  }, { prefix = "c", mode = "n" })
-
-  -- M.which_key.register({
-  --   s = "Delete Surround",
-  -- }, { prefix = "d", mode = "n" })
-
-  M.which_key.register({
-    s = "Add Surround",
-  }, { prefix = "y", mode = "n" })
+  M.which_key.add({
+    { "gb", desc = "Switch the specified line to a block comment", mode = "v" },
+    { "gc", desc = "Switch the specified line to a line comment",  mode = "v" },
+  })
 end
 
 return M
