@@ -31,7 +31,9 @@ local M = {
     { name = "buffer" },
     { name = "cmp_tabnine" },
     { name = "vim-dadbod-completion" },
-  }
+  },
+  -- 是否提示格式化使用的插件
+  show_formatter_notify = false,
 }
 
 return M

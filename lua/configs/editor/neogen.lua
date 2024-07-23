@@ -90,20 +90,20 @@ function M.register_key()
       options = { silent = true },
       description = "Generate type annotation",
     },
-    {
-      mode = { "i" },
-      lhs = "<c-l>",
-      rhs = "<cmd>lua require('neogen').jump_next()<cr>",
-      options = { silent = true },
-      description = "Jump to next annotation scope",
-    },
-    {
-      mode = { "i" },
-      lhs = "<c-h>",
-      rhs = "<cmd>lua require('neogen').jump_prev()<cr>",
-      options = { silent = true },
-      description = "Jump to previous annotation scope",
-    },
+    -- {
+    --   mode = { "i" },
+    --   lhs = "<c-l>",
+    --   rhs = "<cmd>lua require('neogen').jump_next()<cr>",
+    --   options = { silent = true },
+    --   description = "Jump to next annotation scope",
+    -- },
+    -- {
+    --   mode = { "i" },
+    --   lhs = "<c-h>",
+    --   rhs = "<cmd>lua require('neogen').jump_prev()<cr>",
+    --   options = { silent = true },
+    --   description = "Jump to previous annotation scope",
+    -- },
   })
 end
 

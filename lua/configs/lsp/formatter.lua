@@ -1,6 +1,7 @@
 -- https://github.com/mhartington/formatter.nvim
 
 local keymap = require('utils.keymap')
+local options = require("base.options")
 
 local M = {
   requires = {
@@ -57,12 +58,17 @@ function M.register_keys()
 end
 
 function M.format()
-  if M.filetype_options[vim.bo.filetype] ~= nil then
+  local filetype = M.filetype_options[vim.bo.filetype];
+  if filetype ~= nil then
     vim.cmd([[Format]])
-    -- vim.notify('use third part formatter', 'INFO', { title = 'Formatter' })
+    if options.show_formatter_notify then
+      vim.notify('use ' .. vim.bo.filetype .. ' part formatter', 'INFO', { title = 'Formatter' })
+    end
   else
     vim.lsp.buf.format()
-    -- vim.notify('use native part formatter', 'INFO', { title = 'Formatter' })
+    if options.show_formatter_notify then
+      vim.notify('use native part formatter', 'INFO', { title = 'Formatter' })
+    end
   end
 end
 
