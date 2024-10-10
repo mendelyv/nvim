@@ -6,7 +6,7 @@
 - git
 - Lua
 - nodejs
-- c编译器
+- c compiler
 - ripgrep
 - python
 - NerdFont(Cousine Nerd Font)
@@ -14,14 +14,14 @@
 _上述依赖不要忘记配置对应系统的环境变量，尤其是Windows_
 
 ## 安装
-类Unix系统克隆至~/.config
+Unix-like clone至~/.config
 
-Windows克隆至AppData/Local
+Windows clone至AppData/Local
 
 配置nvim别名
 ``` shell
 if type nvim > /dev/null 2>1&; then
-    vi=‘nvim'
+    vi='nvim'
 fi
 ```
 
@@ -74,7 +74,7 @@ _Windows使用需要Cygwin环境_
 
 ## Windows常见问题
 ### nvim-treesitter
-- 在win使用默认配置下载编译使用时，会出现编译后的.so文件无法正常运行问题，详细解决方案见<https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support>
+- 在win使用默认配置下载编译使用时，会出现编译后的.so文件无法正常运行问题，改用LLVM编译，详细解决方案见<https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support>
 
 
 
