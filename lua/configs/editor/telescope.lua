@@ -33,6 +33,10 @@ function M.load()
         },
       },
       path_display = { "smart" },
+      history = {
+        path = options.telescope_smart_history_path,
+        limit = 100,
+      },
     },
     pickers = {
       buffers = {
@@ -53,6 +57,14 @@ function M.load()
         override_file_sorter = true,
         case_mode = "smart_case",
       },
+      frecency = {
+        auto_validate = false,
+        matcher = "fuzzy",
+        path_display = { "filename_first" },
+      },
+      live_grep_args = {
+        auto_quoting = true, -- enable/disable auto-quoting
+      },
     },
   })
 end
@@ -60,6 +72,9 @@ end
 function M.after()
   M.telescope.load_extension("fzf")
   M.telescope.load_extension("yank_history")
+  M.telescope.load_extension("smart_history")
+  M.telescope.load_extension("frecency")
+  M.telescope.load_extension("live_grep_args")
 
   -- 预览界面内容换行
   vim.api.nvim_create_autocmd("User", {
@@ -88,7 +103,7 @@ function M.register_key()
       mode = { "n" },
       lhs = "<leader>fg",
       rhs = function()
-        require("telescope.builtin").live_grep()
+        require("telescope").extensions.live_grep_args.live_grep_args()
       end,
       options = { silent = true },
       description = "Find string in the current workspace",

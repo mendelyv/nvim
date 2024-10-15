@@ -19,6 +19,8 @@ local M = {
   disabled_language_servers = {},
   -- telescope忽略
   telescope_file_ignore_patterns = {},
+  -- telescope历史记录数据库路径
+  telescope_smart_history_path = path_util.join(vim.fn.stdpath("data"), "databases", "telescope_history.sqlite3"),
   -- nvim-tree忽略，配置这个字段时需要reload一下nvim-tree插件
   nvim_tree_filters_custom = {
     "*.DS_Store",
