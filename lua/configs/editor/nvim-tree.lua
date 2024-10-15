@@ -49,7 +49,9 @@ function M.load()
 end
 
 function M.reload()
-  M.nvim_tree = require("nvim-tree")
+  if nil == M.nvim_tree then
+    M.nvim_tree = require("nvim-tree")
+  end
   M.load()
 end
 
