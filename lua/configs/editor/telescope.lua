@@ -37,6 +37,9 @@ function M.load()
         path = options.telescope_smart_history_path,
         limit = 100,
       },
+      cache_picker = {
+        num_pickers = 20,
+      },
     },
     pickers = {
       buffers = {
@@ -215,6 +218,15 @@ function M.register_key()
       end,
       options = { silent = true },
       description = "Find keyboard shortcut",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>fp",
+      rhs = function()
+        require("telescope.builtin").pickers()
+      end,
+      options = { silent = true },
+      description = "Show query history",
     },
   })
 end
