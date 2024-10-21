@@ -15,11 +15,12 @@ function M.load()
         highlight = { backdrop = true },
       },
       char = {
-        enabled = false,
-        multi_line = false,
+        enabled = true,
+        jump_labels = true,
+        label = { exclude = "g" },
         highlight = { backdrop = true },
-      }
-    }
+      },
+    },
   })
 end
 
@@ -32,7 +33,7 @@ function M.register_keys()
     {
       mode = { "n", "x", "o" },
       lhs = "<leader>hw",
-      rhs = function ()
+      rhs = function()
         require("flash").jump()
       end,
       options = { silent = true },
