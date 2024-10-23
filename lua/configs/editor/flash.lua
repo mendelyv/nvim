@@ -17,8 +17,9 @@ function M.load()
       char = {
         enabled = true,
         jump_labels = true,
-        label = { exclude = "g" },
-        highlight = { backdrop = true },
+        multi_line = false,
+        label = { exclude = "gcisxd" },
+        highlight = { backdrop = false },
       },
     },
   })
