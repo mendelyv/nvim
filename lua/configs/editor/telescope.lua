@@ -44,9 +44,6 @@ function M.load()
     pickers = {
       buffers = {
         mappings = {
-          i = {
-            ["<c-d>"] = "delete_buffer",
-          },
           n = {
             ["dd"] = "delete_buffer",
           },
