@@ -18,7 +18,7 @@ function M.load()
         enabled = true,
         jump_labels = true,
         multi_line = false,
-        label = { exclude = "gcisxd" },
+        label = { exclude = "gcisxdalh" },
         highlight = { backdrop = false },
       },
     },
@@ -33,7 +33,7 @@ function M.register_keys()
   keymap.register_all({
     {
       mode = { "n", "x", "o" },
-      lhs = "<leader>hw",
+      lhs = "s",
       rhs = function()
         require("flash").jump()
       end,
