@@ -229,6 +229,11 @@ M.editor = {
     "gbprod/yanky.nvim",
     event = { "VeryLazy" },
   },
+  {
+    -- 终端
+    "akinsho/toggleterm.nvim",
+    event = { "VeryLazy" },
+  },
 }
 
 lazy.entry(M)

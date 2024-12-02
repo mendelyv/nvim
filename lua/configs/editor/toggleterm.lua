@@ -1,6 +1,5 @@
 -- https://github.com/akinsho/toggleterm.nvim
 
-local common = require("utils.common")
 local keymap = require("utils.keymap")
 
 local M = {
@@ -48,8 +47,43 @@ function M.register_keys()
       end,
       options = { silent = true },
       description = "Open Lazygit",
-    }
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>tt",
+      rhs = function()
+        M.open_new_normal_terminal()
+      end,
+      options = { silent = true },
+      description = "Open Terminal",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>tf",
+      rhs = function()
+        M.open_new_float_terminal()
+      end,
+      options = { silent = true },
+      description = "Open Float Terminal",
+    },
   })
+end
+
+function M.open_new_float_terminal()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local terminal = Terminal:new({
+    direction = "float",
+    float_opts = {
+      border = "double",
+    },
+  })
+  terminal:toggle()
+end
+
+function M.open_new_normal_terminal()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local terminal = Terminal:new()
+  terminal:toggle()
 end
 
 return M
