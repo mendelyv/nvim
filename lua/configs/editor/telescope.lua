@@ -33,10 +33,6 @@ function M.load()
         },
       },
       path_display = { "smart" },
-      history = {
-        path = options.telescope_smart_history_path,
-        limit = 100,
-      },
       cache_picker = {
         num_pickers = 20,
       },
@@ -72,7 +68,6 @@ end
 function M.after()
   M.telescope.load_extension("fzf")
   M.telescope.load_extension("yank_history")
-  M.telescope.load_extension("smart_history")
   M.telescope.load_extension("frecency")
   M.telescope.load_extension("live_grep_args")
 

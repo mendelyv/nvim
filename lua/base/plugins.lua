@@ -181,7 +181,6 @@ M.editor = {
     dependencies = {
       "kkharji/sqlite.lua",
       "nvim-telescope/telescope-fzf-native.nvim",
-      "nvim-telescope/telescope-smart-history.nvim",
       "nvim-telescope/telescope-frecency.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
