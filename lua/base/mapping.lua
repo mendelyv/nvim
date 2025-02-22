@@ -20,7 +20,11 @@ map_util.register_all({
   {
     mode = { "n" },
     lhs = "<c-w>a",
-    rhs = "<c-w>_<c-w>|",
+    rhs = function()
+      vim.cmd("NvimTreeClose")
+      vim.cmd("wincmd _")
+      vim.cmd("wincmd |")
+    end,
     options = { silent = true },
     description = "Full screen current buffer",
   },
