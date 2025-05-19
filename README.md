@@ -6,7 +6,7 @@
 - git
 - Lua
 - nodejs
-- c compiler
+- c compiler (gcc clang)
 - ripgrep
 - python
 - NerdFont(Cousine Nerd Font)
@@ -24,6 +24,11 @@ if type nvim > /dev/null 2>1&; then
     vi='nvim'
 fi
 ```
+
+### 安装clang
+下载[clang]
+下载[llvm-mingw]
+
 
 _Windows使用需要Cygwin环境_
 
@@ -56,7 +61,7 @@ _Windows使用需要Cygwin环境_
 
 对应不同项目等，使用.nvim.lua文件覆盖全局配置
 
-[telescope-fzf-native]插件需要手动编译
+[telescope-fzf-native]插件需要手动编译，尽量使用msvc编译，gcc容易出现平台问题
 
 ## 自定义工作区
 需要在工程的根目录创建.nvim.lua文件，这个文件的生命周期是在neovim加载完之后，非懒加载的插件如要改配置需要添加相应的reload方法，详情见.nvim.unity.lua文件如何处理的nvim-tree插件
@@ -85,3 +90,5 @@ _Windows使用需要Cygwin环境_
 [mason]: https://github.com/williamboman/mason.nvim
 [treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [telescope-fzf-native]: https://github.com/nvim-telescope/telescope-fzf-native.nvim
+[clang]: https://github.com/llvm/llvm-project/releases
+[llvm-mingw]: https://github.com/mstorsjo/llvm-mingw/releases
