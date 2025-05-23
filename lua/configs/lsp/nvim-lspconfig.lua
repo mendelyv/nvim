@@ -105,7 +105,7 @@ function M.load()
 
   for _, server_name in ipairs(servers) do
     local config_path = path_util.join(M.server_configurations_directory,
-      mappings.lspconfig_to_mason[server_name] or server_name)
+      mappings.lspconfig_to_package[server_name] or server_name)
     local ok, configuration = pcall(require, config_path)
 
     -- 将默认的LSP服务配置跟加载后的配置，同名键会被覆盖
