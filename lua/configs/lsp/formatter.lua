@@ -2,40 +2,66 @@
 
 local keymap = require('utils.keymap')
 local options = require("base.options")
+local common = require("utils.common")
 
 local M = {
   requires = {
     "formatter",
-  },
-  filetype_options = {
-    python = {
-      function()
-        return {
-          exe = "autopep8",
-          args = { "--in-place" },
-          stdin = false,
-        }
-      end
-    },
-    json = {
-      function()
-        return {
-          exe = "prettier",
-          args = {
-            "--config-precedence",
-            "prefer-file",
-
-            "--stdin-filepath",
-            vim.api.nvim_buf_get_name(0),
-          },
-          stdin = true,
-        }
-      end
-    },
+    "formatter.util",
   },
 }
 
+function M.parserExecutableName(name)
+  if common.is_windows() then
+    return name .. ".cmd"
+  end
+  return name
+end
+
 function M.load()
+  local prettier = {
+    function(parser)
+      if not parser then
+        return {
+          exe = M.parserExecutableName("prettier"),
+          args = {
+            "--stdin-filepath",
+            M.formatter_util.escape_path(M.formatter_util.get_current_buffer_file_path()),
+          },
+          stdin = true,
+          try_node_modules = true,
+        }
+      end
+
+      return {
+        exe = M.parserExecutableName("prettier"),
+        args = {
+          "--stdin-filepath",
+          M.formatter_util.escape_path(M.formatter_util.get_current_buffer_file_path()),
+          "--parser",
+          parser,
+        },
+        stdin = true,
+        try_node_modules = true,
+      }
+    end
+  }
+
+  M.filetype_options = {
+    python = {
+      function()
+        return {
+          exe = M.parserExecutableName("autopep8"),
+          args = { "-" },
+          stdin = 1,
+        }
+      end
+    },
+    json = prettier,
+    jsonc = prettier,
+    -- typescript = prettier,
+  }
+
   M.formatter.setup({
     filetype = M.filetype_options,
   })
