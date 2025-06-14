@@ -1,19 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#omnisharp
 
-local util = require("lspconfig.util")
-
-local root_files = {
-  "*.sln",
-  "*.csproj",
-  "omnisharp.json",
-  "function.json",
-}
-
 return {
   cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
-  root_dir = function(fname)
-    return util.root_pattern(unpack(root_files))(fname)
-  end,
   -- For go_to_definition to work fully, extended textDocument/definition handler is needed
   -- https://github.com/Hoffs/omnisharp-extended-lsp.nvim
   handlers = {

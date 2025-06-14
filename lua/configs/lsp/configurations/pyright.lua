@@ -3,15 +3,6 @@
 local util = require("lspconfig.util")
 local aid_nvim_lsptools = require("utils.aid.nvim-lsptools")
 
-local root_files = {
-  "pyproject.toml",
-  "setup.py",
-  "setup.cfg",
-  "requirements.txt",
-  "Pipfile",
-  "pyrightconfig.json",
-}
-
 local ignore_diagnostic_message = {
   '"self" is not accessed',
   '"args" is not accessed',
@@ -22,7 +13,6 @@ return {
   filetypes = { "python" },
   single_file_support = true,
   cmd = { "pyright-langserver", "--stdio" },
-  root_dir = util.root_pattern(unpack(root_files)),
   handlers = {
     -- If you want to disable pyright's diagnostic prompt, open the code below
     -- ["textDocument/publishDiagnostics"] = function(...) end,

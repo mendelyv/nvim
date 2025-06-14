@@ -8,9 +8,7 @@ local icons = require("utils.icons").get_icons("diagnostic", true)
 local M = {
   requires = {
     "neodev",
-    -- "neoconf",
     "lspconfig",
-    -- "nvim-navic",
     "mason-lspconfig",
   },
   server_configurations_directory = path_util.join("configs", "lsp", "configurations"),
@@ -18,12 +16,6 @@ local M = {
 
 function M.lsp_basic_init()
   M.lsp_handlers = {
-    -- 给两个lsp浮动窗添加边框显示
-    -- vim.lsp.handlers["textDocument/hover"]: 处理悬停信息请求，例如 vim.lsp.buf.hover()。
-    -- vim.lsp.handlers["textDocument/signatureHelp"]: 处理函数参数提示信息请求，例如 vim.lsp.buf.signature_help()。
-    -- vim.lsp.handlers["textDocument/definition"]: 处理跳转到定义请求，例如 vim.lsp.buf.definition()。
-    -- vim.lsp.handlers["textDocument/references"]: 处理查找引用请求，例如 vim.lsp.buf.references()。
-    -- vim.lsp.handlers["textDocument/codeAction"]: 处理代码操作请求，例如 vim.lsp.buf.code_action()。
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = options.float_border and "rounded" or "none",
     }),
@@ -31,32 +23,7 @@ function M.lsp_basic_init()
       border = options.float_border and "rounded" or "none",
     })
   }
-
-  -- M.capabilities = vim.lsp.protocol.make_client_capabilities()
   M.capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-  -- M.capabilities.textDocument.foldingRange = {
-  --   dynamicRegistration = false,
-  --   lineFoldingOnly = true,
-  -- }
-
-  -- M.capabilities.textDocument.completion.completionItem = {
-  --   documentationFormat = { "markdown" },
-  --   snippetSupport = true,
-  --   preselectSupport = true,
-  --   insertReplaceSupport = true,
-  --   labelDetailsSupport = true,
-  --   deprecatedSupport = true,
-  --   commitCharactersSupport = true,
-  --   tagSupport = { valueSet = { 1 } },
-  --   resolveSupport = {
-  --     properties = {
-  --       "documentation",
-  --       "detail",
-  --       "additionalTextEdits",
-  --     },
-  --   },
-  -- }
 end
 
 function M.lsp_diagnostic_init()
@@ -104,28 +71,22 @@ function M.load()
   local servers = M.mason_lspconfig.get_installed_servers()
 
   for _, server_name in ipairs(servers) do
-    local config_path = path_util.join(M.server_configurations_directory,
-      mappings.lspconfig_to_package[server_name] or server_name)
+    local map_name = mappings.lspconfig_to_package[server_name] or server_name;
+
+    if options.lsp_debug then
+      vim.print(server_name .. " language server mapping name " .. map_name)
+    end
+
+    local config_path = path_util.join(M.server_configurations_directory, map_name);
     local ok, configuration = pcall(require, config_path)
 
-    -- 将默认的LSP服务配置跟加载后的配置，同名键会被覆盖
-    -- 给一个默认的on_attach函数，若语言服务配置文件未指定，则使用默认函数
-    configuration = vim.tbl_deep_extend("force", {
-      on_init = function(client, bufnr) end,
-      on_attach = function(client, bufnr) end,
-    }, ok and configuration or {})
-
-    if not vim.tbl_contains(options.disabled_language_servers, server_name) then
-      -- 语言服务on_attach回调
-      local private_on_attach = configuration.on_attach
-      configuration.handlers = M.get_handlers(configuration)
-      configuration.capabilities = M.get_capabilities(configuration)
-      configuration.on_attach = function(client, bufnr)
-        -- M.nvim_navic.attach(client, bufnr)
-        private_on_attach(client, bufnr)
+    if not vim.tbl_contains(options.disabled_language_servers, map_name) then
+      -- 合并语言服务配置
+      if ok then
+        vim.lsp.config(server_name, configuration);
       end
       -- 启用语言服务
-      M.lspconfig[server_name].setup(configuration)
+      vim.lsp.enable(server_name);
     end
   end
 end
@@ -153,7 +114,7 @@ function M.register_key()
     {
       mode = { "n" },
       lhs = "gh",
-      rhs = vim.lsp.buf.hover,
+      rhs = M.hover,
       options = { silent = true },
       description = "Show help information",
     },
@@ -230,8 +191,12 @@ function M.register_key()
   })
 end
 
+function M.hover()
+  vim.lsp.buf.hover({ border = options.float_border and "rounded" or "none" })
+end
+
 function M.toggle_sigature_help()
-  vim.lsp.buf.signature_help()
+  vim.lsp.buf.signature_help({ border = options.float_border and "rounded" or "none" })
 end
 
 function M.show_line_diagnostic()
