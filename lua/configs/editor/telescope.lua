@@ -27,12 +27,14 @@ function M.load()
       layout_config = {
         vertical = {
           preview_height = 0.6,
+          height = 0.95,
+          width = 0.95,
         },
         flex = {
           flip_columns = 120,
         },
       },
-      path_display = { "smart" },
+      path_display = { "filename_first" },
       cache_picker = {
         num_pickers = 20,
       },
@@ -219,6 +221,24 @@ function M.register_key()
       end,
       options = { silent = true },
       description = "Show query history",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>fj",
+      rhs = function()
+        require("telescope.builtin").jumplist()
+      end,
+      options = { silent = true },
+      description = "Show jump list",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>fz",
+      rhs = function()
+        require("telescope.builtin").current_buffer_fuzzy_find()
+      end,
+      options = { silent = true },
+      description = "Show buffer fuzzy find",
     },
   })
 end
