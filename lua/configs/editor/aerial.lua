@@ -50,7 +50,7 @@ function M.load()
       "Module",
       "Method",
       "Struct",
-      "Property",
+      -- "Property",
     },
     keymaps = {
       ["o"] = "actions.jump",

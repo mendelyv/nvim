@@ -49,11 +49,6 @@ M.views = {
     "nvim-lualine/lualine.nvim",
     event = { "UIEnter" },
   },
-  -- {
-  --   -- buffer栏
-  --   "akinsho/bufferline.nvim",
-  --   event = { "UIEnter" },
-  -- },
   {
     -- session管理器
     "olimorris/persisted.nvim",
@@ -83,8 +78,6 @@ M.lsp = {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
-      -- { "folke/neoconf.nvim" },
-      { "folke/neodev.nvim" },
       { "Hoffs/omnisharp-extended-lsp.nvim" },
     },
   },
@@ -99,25 +92,16 @@ M.lsp = {
     -- tag = "legacy",
     event = { "LspAttach" },
   },
-  -- {
-  --   -- 导航栏插件
-  --   "SmiteshP/nvim-navic",
-  --   lazy = true,
-  -- },
 }
 
 M.complete = {
   {
-    -- 补全插件及其相关的源
-    "hrsh7th/nvim-cmp",
+    'saghen/blink.cmp',
     dependencies = {
-      { "hrsh7th/cmp-path" },
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-cmdline" },
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "saadparwaiz1/cmp_luasnip" },
-      { "kristijanhusak/vim-dadbod-completion" },
+      'rafamadriz/friendly-snippets',
+      "xzbdmw/colorful-menu.nvim",
     },
+    version = "1.*",
     event = { "InsertEnter", "CmdlineEnter" },
   },
   {
