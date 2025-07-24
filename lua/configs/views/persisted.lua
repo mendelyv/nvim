@@ -1,7 +1,7 @@
 -- https://github.com/olimorris/persisted.nvim
 
-local path_util = require("utils.path")
 local keymap = require("utils.keymap")
+local options = require("base.options")
 
 local M = {
   requires = {
@@ -19,7 +19,7 @@ function M.load()
     -- Linux: ~/.cache/nvim
     -- macOS: ~/.cache/nvim
     -- Windows: ~/AppData/Local/nvim
-    save_dir = path_util.join(vim.fn.stdpath("cache"), "sessions"),
+    save_dir = options.session_directory,
     -- use_git_branche = true,
     -- command = "VimLeavePre",
     -- autosave = true,

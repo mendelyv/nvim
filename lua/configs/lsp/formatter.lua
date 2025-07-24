@@ -84,11 +84,11 @@ function M.register_keys()
 end
 
 function M.format()
-  local filetype = M.filetype_options[vim.bo.filetype];
-  if filetype ~= nil then
+  local mapping = options.formatter_filetype_mapping[vim.bo.filetype];
+  if mapping ~= nil then
     vim.cmd([[Format]])
     if options.show_formatter_notify then
-      vim.notify('use ' .. vim.bo.filetype .. ' part formatter', 'INFO', { title = 'Formatter' })
+      vim.notify('use ' .. mapping .. ' part formatter', 'INFO', { title = 'Formatter' })
     end
   else
     vim.lsp.buf.format()
