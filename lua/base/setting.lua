@@ -105,9 +105,13 @@ M.opt = {
   sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals",
   -- 分屏时是否自动调整窗口尺寸
   equalalways = false,
+  -- 分屏窗口对齐方式
   eadirection = "ver",
   -- 允许调用自定义配置.nvim.lua
   exrc = true,
+  -- 关闭shada
+  shada = "",
+  shadafile = "NONE",
 }
 
 for prefix, tbl in pairs(M) do
