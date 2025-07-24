@@ -7,24 +7,11 @@ local icons = require("utils.icons").get_icons("diagnostic", true)
 
 local M = {
   requires = {
-    "neodev",
     "lspconfig",
     "mason-lspconfig",
   },
   server_configurations_directory = path_util.join("configs", "lsp", "configurations"),
 }
-
-function M.lsp_basic_init()
-  M.lsp_handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = options.float_border and "rounded" or "none",
-    }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = options.float_border and "rounded" or "none",
-    })
-  }
-  M.capabilities = require('cmp_nvim_lsp').default_capabilities()
-end
 
 function M.lsp_diagnostic_init()
   vim.diagnostic.config({
@@ -56,14 +43,7 @@ function M.lsp_diagnostic_init()
 end
 
 function M.load()
-  M.lsp_basic_init()
   M.lsp_diagnostic_init()
-  M.neodev.setup({
-    override = function(root_dir, library)
-      library.enabled = true
-      library.plugins = true
-    end,
-  })
 
   -- 获取lspconfig和mason对语言服务的名称映射
   local mappings = M.mason_lspconfig.get_mappings()
@@ -79,6 +59,9 @@ function M.load()
 
     local config_path = path_util.join(M.server_configurations_directory, map_name);
     local ok, configuration = pcall(require, config_path)
+    if options.lsp_debug then
+      vim.print(server_name .. '语言服务配置路径' .. config_path)
+    end
 
     if not vim.tbl_contains(options.disabled_language_servers, map_name) then
       -- 合并语言服务配置
@@ -125,6 +108,7 @@ function M.register_key()
         require("telescope.builtin").lsp_references({
           fname_width = 200,
           show_line = false,
+          reuse_win = true,
         })
       end,
       options = { silent = true },
@@ -144,6 +128,7 @@ function M.register_key()
         require("telescope.builtin").lsp_definitions({
           fname_width = 200,
           show_line = false,
+          reuse_win = true,
         })
       end,
       options = { silent = true },
@@ -209,14 +194,6 @@ end
 
 function M.goto_next_diagnostic()
   vim.diagnostic.goto_next({ float = { border = options.float_border and "rounded" or "none" }, _highest = true })
-end
-
-function M.get_handlers(settings)
-  return vim.tbl_deep_extend("force", M.lsp_handlers, settings.handlers or {})
-end
-
-function M.get_capabilities(configuration)
-  return vim.tbl_deep_extend("force", M.capabilities, configuration.capabilities or {})
 end
 
 return M
