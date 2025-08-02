@@ -75,8 +75,8 @@ function M.load()
     },
     keymap = {
       preset = "none",
-      ['<c-p>'] = { 'select_prev', 'fallback_to_mappings' },
-      ['<c-n>'] = { 'select_next', 'fallback_to_mappings' },
+      ['<c-p>'] = { 'select_prev', 'fallback' },
+      ['<c-n>'] = { 'select_next', 'fallback' },
 
       ['<c-y>'] = false,
 
