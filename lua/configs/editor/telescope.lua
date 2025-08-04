@@ -2,10 +2,12 @@
 
 local keymap = require("utils.keymap")
 local options = require("base.options")
+local path = require("utils.path")
 
 local M = {
   requires = {
     "telescope",
+    "telescope.utils",
   },
 }
 
@@ -41,6 +43,61 @@ function M.load()
     },
     pickers = {
       buffers = {
+        entry_maker = function(entry)
+          local bufnr = entry.bufnr
+          local bufnr_str = tostring(bufnr)
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          local relpath = bufname ~= "" and vim.fn.fnamemodify(bufname, ":.") or "[No Name]"
+          local filename = vim.fn.fnamemodify(bufname, ":t")
+          local icon, hl_group = M.telescope_utils.get_devicons(filename, false)
+
+          -- local hidden = entry.info.hidden == 1 and "h" or ((entry.flag == "%" or entry.flag == "#") and "a" or " ")
+          local hidden = entry.info.hidden == 1 and "h" or " "
+          local readonly = vim.api.nvim_buf_get_option(entry.bufnr, "readonly") and "=" or " "
+          local changed = entry.info.changed == 1 and "+" or " "
+          local indicator = entry.flag .. hidden .. readonly .. changed
+
+          local lnum = 1
+          if entry.info.lnum ~= 0 then
+            if vim.api.nvim_buf_is_loaded(bufnr) then
+              local line_count = vim.api.nvim_buf_line_count(bufnr)
+              lnum = math.max(math.min(entry.info.lnum, line_count), 1)
+            else
+              lnum = entry.info.lnum
+            end
+          end
+
+          local file_with_line = filename
+          file_with_line = string.format("%s:%s", filename, lnum)
+
+          local display_relative_path = path.trim_filename(relpath);
+          local displayer = require("telescope.pickers.entry_display").create({
+            separator = " ",
+            items = {
+              { width = 4 },
+              { width = 4 },
+              { width = 2 },
+              { width = #file_with_line + 1 },
+              { remaining = true },
+            },
+          })
+
+          return {
+            value = bufnr,
+            ordinal = filename .. relpath,
+            display = function()
+              return displayer({
+                { bufnr_str,             "TelescopeResultsNumber", },
+                { indicator,             "TelescopeResultsComment" },
+                { icon,                  hl_group },
+                { file_with_line },
+                { display_relative_path, "Comment" }
+              })
+            end,
+            bufnr = bufnr,
+            path = bufname,
+          }
+        end,
         mappings = {
           n = {
             ["dd"] = "delete_buffer",
@@ -70,7 +127,6 @@ end
 function M.after()
   M.telescope.load_extension("fzf")
   M.telescope.load_extension("yank_history")
-  M.telescope.load_extension("frecency")
   M.telescope.load_extension("live_grep_args")
 
   -- 预览界面内容换行
@@ -125,7 +181,7 @@ function M.register_key()
     },
     {
       mode = { "n" },
-      lhs = "<leader>ft",
+      lhs = "<leader>aft",
       rhs = function()
         require("telescope.builtin").help_tags()
       end,
