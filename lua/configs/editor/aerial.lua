@@ -8,20 +8,14 @@ local M = {
   },
 }
 
-function M.before() end
-
 function M.load()
   M.aerial.setup({
     show_guides = true,
-    backends = { "lsp", "treesitter", "markdown" },
     update_events = "TextChanged,InsertLeave",
-    on_attach = function(bufnr)
-      M.register_key()
-    end,
     layout = {
-      min_width = 60,
+      min_width = 40,
       default_direction = "float",
-      -- max_width = { 40, 0.2 },
+      max_width = 0.9,
       win_opts = {
         cursorline = true,
         number = true,
@@ -35,12 +29,6 @@ function M.load()
     },
     close_on_select = true,
     nerd_font = "auto",
-    -- guides = {
-    --     mid_item = "├─",
-    --     last_item = "└─",
-    --     nested_top = "│ ",
-    --     whitespace = "  ",
-    -- },
     filter_kind = {
       "Class",
       "Constructor",
@@ -59,14 +47,18 @@ function M.load()
   })
 end
 
-function M.after() end
+function M.after()
+  M.register_key()
+end
 
 function M.register_key()
   keymap.register_all({
     {
       mode = { "n" },
       lhs = "<leader>2",
-      rhs = "<cmd>AerialToggle<cr>",
+      rhs = function()
+        require("aerial").toggle()
+      end,
       options = { silent = true },
       description = "Open Outilne Explorer",
     },

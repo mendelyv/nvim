@@ -85,8 +85,12 @@ M.opt = {
   iskeyword = "@,48-57,_,192-255",
   -- 控制状态栏的显示方式
   laststatus = 3,
-  -- 是否启用自动换行（line wrapping）
+  -- 视觉换行
+  wrap = true,
+  -- 是否启用按单词wrap换行
   linebreak = true,
+  -- wrap换行提示符
+  showbreak = "↪",
   -- 设置特定显示元素的替代字符
   fillchars = "eob: ",
   -- 设置当前文件的字符编码（character encoding）
