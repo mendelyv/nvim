@@ -147,7 +147,9 @@ function M.register_key()
       mode = { "n" },
       lhs = "<leader>ff",
       rhs = function()
-        require("telescope.builtin").find_files()
+        require("telescope.builtin").find_files({
+          hidden = true,
+        })
       end,
       options = { silent = true },
       description = "Find files in the current workspace",

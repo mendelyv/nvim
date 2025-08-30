@@ -22,6 +22,7 @@ function M.load()
       group = "󰉺 ",
     },
     win = {
+      no_overlap = false,
       border = options.float_border and "single" or "none",
     },
   })
