@@ -8,6 +8,9 @@ M.theme = {
     -- 优先级
     priority = 100,
   },
+  {
+    "xiyaowong/transparent.nvim",
+  },
 }
 
 M.basic = {
