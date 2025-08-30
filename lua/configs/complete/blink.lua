@@ -18,6 +18,17 @@ function M.load()
           auto_show = true,
         },
       },
+      keymap = {
+        preset = "none",
+        ['<c-p>'] = { 'select_prev', 'fallback' },
+        ['<c-n>'] = { 'select_next', 'fallback' },
+
+        ['<c-y>'] = false,
+
+        ['<c-k>'] = { 'show', 'hide' },
+        ['<tab>'] = { 'select_and_accept', 'fallback' },
+        ['<c-j>'] = { 'show_signature', 'hide_signature', 'fallback' },
+      }
     },
     appearance = {
       use_nvim_cmp_as_default = true,
