@@ -45,7 +45,7 @@ function M.load()
 end
 
 --- 设置 lualine 主题
----@param configuration
+---@param configuration table
 function M.setLualineTheme(configuration)
   local options = {
     theme = bubbles_theme,
@@ -60,12 +60,12 @@ function M.setLualineTheme(configuration)
 
   local sections = {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-    lualine_b = { 'filename', 'branch' },
+    lualine_b = { 'diagnostics', 'filename', 'branch' },
     lualine_c = {
       '%=', --[[ add your center components here in place of this comment ]]
     },
     lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
+    lualine_y = { 'filetype', 'lsp_status', 'progress' },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
     },
@@ -89,9 +89,6 @@ function M.setLualineTheme(configuration)
   else
     utils.table_merge(configuration.inactive_sections, inactive_sections)
   end
-
-  local tabline = {}
-  local extensions = {}
 end
 
 function M.after() end

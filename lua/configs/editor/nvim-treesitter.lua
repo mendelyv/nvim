@@ -7,8 +7,6 @@ local M = {
   },
 }
 
-function M.before() end
-
 function M.load()
   M.nvim_treesitter_install.prefer_git = true
   M.nvim_treesitter_install.compilers = { "clang" }
@@ -45,7 +43,5 @@ function M.load()
     -- },
   })
 end
-
-function M.after() end
 
 return M

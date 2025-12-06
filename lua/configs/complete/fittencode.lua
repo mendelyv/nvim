@@ -33,15 +33,6 @@ function M.register_key()
       options = { silent = true },
       description = "Accept fittencode line",
     },
-    -- {
-    --   mode = { "i" },
-    --   lhs = "<c-l>",
-    --   rhs = function()
-    --     M.fittencode.accept_word()
-    --   end,
-    --   options = { silent = true },
-    --   description = "Accept fittencode word",
-    -- },
   })
 end
 

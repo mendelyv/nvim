@@ -114,8 +114,8 @@ M.opt = {
   -- 允许调用自定义配置.nvim.lua
   exrc = true,
   -- 关闭shada
-  shada = "",
-  shadafile = "NONE",
+  -- shada = "",
+  -- shadafile = "NONE",
 }
 
 for prefix, tbl in pairs(M) do
