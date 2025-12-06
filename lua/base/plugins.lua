@@ -10,6 +10,7 @@ M.theme = {
   },
   {
     "xiyaowong/transparent.nvim",
+    priority = 99,
   },
 }
 
@@ -34,6 +35,10 @@ M.basic = {
     "LunarVim/bigfile.nvim",
     event = { "UIEnter" },
   },
+  {
+    "folke/lazydev.nvim",
+    event = { "VeryLazy" },
+  },
 }
 
 M.views = {
@@ -45,7 +50,7 @@ M.views = {
   {
     -- 图标
     "nvim-tree/nvim-web-devicons",
-    event = { "VimEnter" },
+    event = { "VeryLazy" },
   },
   {
     -- 状态栏
@@ -74,7 +79,7 @@ M.lsp = {
   {
     -- 语言服务包管理器
     "williamboman/mason.nvim",
-    event = { "VimEnter" },
+    event = { "VeryLazy" },
   },
   {
     -- LSP
@@ -83,17 +88,12 @@ M.lsp = {
       { "williamboman/mason-lspconfig.nvim" },
       { "Hoffs/omnisharp-extended-lsp.nvim" },
     },
+    event = { "VeryLazy" },
   },
   {
     -- 代码格式化
     "mhartington/formatter.nvim",
     event = { "VeryLazy" },
-  },
-  {
-    -- LSP进度插件
-    "j-hui/fidget.nvim",
-    -- tag = "legacy",
-    event = { "LspAttach" },
   },
 }
 
@@ -108,15 +108,6 @@ M.complete = {
     event = { "InsertEnter", "CmdlineEnter" },
   },
   {
-    -- 代码块
-    "L3MON4D3/LuaSnip",
-    -- in nvim-cmp config file require luasnip
-    lazy = true,
-    dependencies = {
-      { "rafamadriz/friendly-snippets" },
-    },
-  },
-  {
     'luozhiya/fittencode.nvim',
     event = { 'VeryLazy' },
   },
@@ -126,7 +117,7 @@ M.editor = {
   {
     -- 文件树
     "nvim-tree/nvim-tree.lua",
-    event = { "VimEnter" },
+    lazy = true,
   },
   {
     -- 缩进线
@@ -146,7 +137,7 @@ M.editor = {
   {
     -- 光标文本高亮
     "RRethy/vim-illuminate",
-    event = { "UIEnter" },
+    event = { "VeryLazy" },
   },
   {
     -- 括号自动补全
@@ -160,7 +151,7 @@ M.editor = {
     dependencies = {
       { "windwp/nvim-ts-autotag" },
     },
-    event = { "UIEnter" },
+    event = { "VeryLazy" },
   },
   {
     -- 搜索整合插件
@@ -202,7 +193,7 @@ M.editor = {
   {
     -- 大纲插件
     "stevearc/aerial.nvim",
-    event = { "VeryLazy" },
+    lazy = true,
   },
   {
     -- 全局替换
@@ -217,7 +208,7 @@ M.editor = {
   {
     -- 终端
     "akinsho/toggleterm.nvim",
-    event = { "VeryLazy" },
+    lazy = true,
   },
 }
 

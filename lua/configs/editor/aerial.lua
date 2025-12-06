@@ -8,6 +8,10 @@ local M = {
   },
 }
 
+function M.before()
+  M.register_key()
+end
+
 function M.load()
   M.aerial.setup({
     show_guides = true,
@@ -47,10 +51,6 @@ function M.load()
   })
 end
 
-function M.after()
-  M.register_key()
-end
-
 function M.register_key()
   keymap.register_all({
     {
@@ -62,34 +62,6 @@ function M.register_key()
       options = { silent = true },
       description = "Open Outilne Explorer",
     },
-    -- {
-    --   mode = { "n" },
-    --   lhs = "{",
-    --   rhs = "<cmd>AerialPrev<cr>",
-    --   options = { silent = true },
-    --   description = "Move item up",
-    -- },
-    -- {
-    --   mode = { "n" },
-    --   lhs = "}",
-    --   rhs = "<cmd>AerialNext<cr>",
-    --   options = { silent = true },
-    --   description = "Move item down",
-    -- },
-    -- {
-    --   mode = { "n" },
-    --   lhs = "[[",
-    --   rhs = "<cmd>AerialPrevUp<cr>",
-    --   options = { silent = true },
-    --   description = "Move up one level",
-    -- },
-    -- {
-    --   mode = { "n" },
-    --   lhs = "]]",
-    --   rhs = "<cmd>AerialNextUp<cr>",
-    --   options = { silent = true },
-    --   description = "Move down one level",
-    -- },
   })
 end
 

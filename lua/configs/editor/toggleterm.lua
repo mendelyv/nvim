@@ -16,14 +16,15 @@ function M.load()
   M.toggleterm.setup()
 end
 
-function M.after()
+function M.generate_lazygit()
+  if nil ~= M.lazygit then return end
   local Terminal = require('toggleterm.terminal').Terminal
   M.lazygit = Terminal:new({
     cmd = "lazygit",
     dir = "git_dir",
     direction = "float",
     float_opts = {
-      border = "double",
+      border = "single",
     },
     -- function to run on opening the terminal
     on_open = function(term)
@@ -43,19 +44,20 @@ function M.register_keys()
       mode = { "n" },
       lhs = "<leader>tg",
       rhs = function()
+        if nil == M.lazygit then M.generate_lazygit() end
         M.lazygit:toggle()
       end,
       options = { silent = true },
-      description = "Open Lazygit",
+      description = "open lazygit",
     },
     {
       mode = { "n" },
-      lhs = "<leader>tt",
+      lhs = "<leader>tn",
       rhs = function()
         M.open_new_normal_terminal()
       end,
       options = { silent = true },
-      description = "Open Terminal",
+      description = "open new terminal",
     },
     {
       mode = { "n" },
@@ -64,7 +66,25 @@ function M.register_keys()
         M.open_new_float_terminal()
       end,
       options = { silent = true },
-      description = "Open Float Terminal",
+      description = "open float terminal",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>tt",
+      rhs = function()
+        M.toggle_all_terminals()
+      end,
+      options = { silent = true },
+      description = "toggle all terminals",
+    },
+    {
+      mode = { "n" },
+      lhs = "<leader>ts",
+      rhs = function()
+        M.shut_down_all_terminals()
+      end,
+      options = { silent = true },
+      description = "shut down all terminals",
     },
   })
 end
@@ -74,7 +94,7 @@ function M.open_new_float_terminal()
   local terminal = Terminal:new({
     direction = "float",
     float_opts = {
-      border = "double",
+      border = "single",
     },
   })
   terminal:toggle()
@@ -84,6 +104,22 @@ function M.open_new_normal_terminal()
   local Terminal = require('toggleterm.terminal').Terminal
   local terminal = Terminal:new()
   terminal:toggle()
+end
+
+function M.toggle_all_terminals()
+  local terminal = require("toggleterm.terminal");
+  local terminals = terminal.get_all(true)
+  for _, term in pairs(terminals) do
+    term:toggle()
+  end
+end
+
+function M.shut_down_all_terminals()
+  local terminal = require("toggleterm.terminal");
+  local terminals = terminal.get_all(true)
+  for _, term in pairs(terminals) do
+    term:shutdown()
+  end
 end
 
 return M

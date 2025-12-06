@@ -8,7 +8,14 @@ local M = {
   requires = {
     "nvim-tree",
   },
-  options = {
+}
+
+function M.before()
+  M.register_keys()
+end
+
+function M.load()
+  local configuration = {
     view = {
       width = { min = 30, max = -1 },
       side = "left",
@@ -25,8 +32,7 @@ local M = {
     },
     git = {
       enable = false,
-    },
-    filters = {
+    }, filters = {
       git_ignored = false,
       dotfiles = false,
       custom = options.nvim_tree_filters_custom,
@@ -37,22 +43,9 @@ local M = {
         window_picker = { enable = true },
       },
     },
-  },
-}
-
-function M.before()
-  M.register_keys()
-end
-
-function M.load()
-  M.nvim_tree.setup(M.options)
-end
-
-function M.reload()
-  if nil == M.nvim_tree then
-    M.nvim_tree = require("nvim-tree")
-  end
-  M.load()
+  }
+  if options.debug then vim.notify("nvim-tree filter length " .. #configuration.filters.custom) end
+  M.nvim_tree.setup(configuration)
 end
 
 function M.register_keys()

@@ -1,5 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.lazydev_enabled = false
 
 --- 配置windows下bash启动
 local function config_windows_bash()
