@@ -31,7 +31,7 @@ function M.auto_install()
       local name, version = unpack(vim.split(name_version, "@"))
       if not M.mason_registry.is_installed(name) then
         if not M.mason_registry.has_package(name) then
-          vim.notify(("Invalid package name : %s"):format(name), "ERROR",
+          vim.notify(("Invalid package name : %s"):format(name), vim.log.levels.ERROR,
             { title = "Mason" })
         else
           local params = version and { version = version }
@@ -45,7 +45,7 @@ function M.auto_install()
   if not vim.tbl_isempty(installed) then
     vim.notify(
       ("Start install package : \n - %s"):format(table.concat(installed, "\n - ")),
-      "INFO",
+      vim.log.levels.INFO,
       { title = "Mason" }
     )
   end

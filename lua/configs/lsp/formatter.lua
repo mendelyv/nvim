@@ -88,12 +88,12 @@ function M.format()
   if mapping ~= nil then
     vim.cmd([[Format]])
     if options.show_formatter_notify then
-      vim.notify('use ' .. mapping .. ' part formatter', 'INFO', { title = 'Formatter' })
+      vim.notify('use ' .. mapping .. ' part formatter', vim.log.levels.INFO, { title = 'Formatter' })
     end
   else
     vim.lsp.buf.format()
     if options.show_formatter_notify then
-      vim.notify('use native part formatter', 'INFO', { title = 'Formatter' })
+      vim.notify('use native part formatter', vim.log.levels.INFO, { title = 'Formatter' })
     end
   end
 end

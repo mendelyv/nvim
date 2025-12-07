@@ -29,8 +29,8 @@ function M.load()
       layout_config = {
         vertical = {
           preview_height = 0.6,
-          height = 0.95,
-          width = 0.95,
+          height = 0.9,
+          width = 0.9,
         },
         flex = {
           flip_columns = 120,
@@ -51,9 +51,8 @@ function M.load()
           local filename = vim.fn.fnamemodify(bufname, ":t")
           local icon, hl_group = M.telescope_utils.get_devicons(filename, false)
 
-          -- local hidden = entry.info.hidden == 1 and "h" or ((entry.flag == "%" or entry.flag == "#") and "a" or " ")
           local hidden = entry.info.hidden == 1 and "h" or " "
-          local readonly = vim.api.nvim_buf_get_option(entry.bufnr, "readonly") and "=" or " "
+          local readonly = vim.api.nvim_get_option_value("readonly", { buf = entry.bufnr }) and "=" or " "
           local changed = entry.info.changed == 1 and "+" or " "
           local indicator = entry.flag .. hidden .. readonly .. changed
 

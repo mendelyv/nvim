@@ -17,5 +17,3 @@ options.nvim_tree_filters_custom = utils.table_merge(options.nvim_tree_filters_c
   "*.meta",
   "*.fire",
 })
-local nvim_tree_module = require("configs.editor.nvim-tree")
-nvim_tree_module.reload()

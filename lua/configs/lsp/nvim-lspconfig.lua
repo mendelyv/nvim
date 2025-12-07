@@ -139,6 +139,18 @@ function M.register_key()
       lhs = "go",
       rhs = function()
         require("telescope.builtin").diagnostics({
+          bufnr = 0,
+          line_width = 200,
+        })
+      end,
+      options = { silent = true },
+      description = "Show Current Buffer Diagnostics",
+    },
+    {
+      mode = { "n" },
+      lhs = "gO",
+      rhs = function()
+        require("telescope.builtin").diagnostics({
           line_width = 200,
         })
       end,
@@ -189,11 +201,11 @@ function M.show_line_diagnostic()
 end
 
 function M.goto_prev_diagnostic()
-  vim.diagnostic.goto_prev({ float = { border = options.float_border and "rounded" or "none" }, _highest = true })
+  vim.diagnostic.jump({ count = -1, float = { border = options.float_border and "rounded" or "none" }, _highest = true })
 end
 
 function M.goto_next_diagnostic()
-  vim.diagnostic.goto_next({ float = { border = options.float_border and "rounded" or "none" }, _highest = true })
+  vim.diagnostic.jump({ count = 1, float = { border = options.float_border and "rounded" or "none" }, _highest = true })
 end
 
 return M

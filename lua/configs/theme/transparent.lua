@@ -7,6 +7,7 @@ local M = {
 }
 
 function M.load()
+  return
   -- M.transparent.clear_prefix("lualine")
   M.transparent.setup({
     extra_groups = {
