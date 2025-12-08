@@ -1,5 +1,6 @@
 -- https://github.com/nvim-lualine/lualine.nvim
 
+local icons = require("utils.icons").get_icons("diagnostic_thin", true)
 local utils = require("utils.utils")
 
 local colors = {
@@ -9,6 +10,7 @@ local colors = {
   white      = '#c6c6c6',
   replace_bg = '#ff5189',
   normal_bg  = '#A7C080',
+  command_bg = '#33CCFF',
   grey       = '#303030',
 }
 
@@ -22,6 +24,7 @@ local bubbles_theme = {
   insert = { a = { fg = colors.black, bg = colors.insert_bg } },
   visual = { a = { fg = colors.black, bg = colors.visual_bg } },
   replace = { a = { fg = colors.black, bg = colors.replace_bg } },
+  command = { a = { fg = colors.black, bg = colors.command_bg } },
 
   inactive = {
     a = { fg = colors.white, bg = colors.black },
@@ -39,6 +42,7 @@ local M = {
 function M.before() end
 
 function M.load()
+  -- local configuration = M.lualine.get_config()
   local configuration = {}
   M.setLualineTheme(configuration)
   M.lualine.setup(configuration)
@@ -60,12 +64,27 @@ function M.setLualineTheme(configuration)
 
   local sections = {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
-    lualine_b = { 'diagnostics', 'filename', 'branch' },
+    lualine_b = {
+      {
+        "diagnostics",
+        source = { "nvim_lsp" },
+        symbols = {
+          error = icons.Error,
+          warn = icons.Warn,
+          info = icons.Info,
+          hint = icons.Hint,
+        },
+      },
+      'branch',
+    },
     lualine_c = {
-      '%=', --[[ add your center components here in place of this comment ]]
+      'filename',
     },
     lualine_x = {},
-    lualine_y = { 'filetype', 'lsp_status', 'progress' },
+    lualine_y = { 'encoding',
+      { 'lsp_status', },
+      'filetype', 'progress'
+    },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
     },
@@ -89,8 +108,11 @@ function M.setLualineTheme(configuration)
   else
     utils.table_merge(configuration.inactive_sections, inactive_sections)
   end
+
+  -- local tabline = {}
+  -- local extensions = {}
 end
 
 function M.after() end
 
-return M
+return M
