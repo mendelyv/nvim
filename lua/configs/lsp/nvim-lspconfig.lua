@@ -4,6 +4,7 @@ local path_util = require("utils.path")
 local options = require("base.options")
 local keymap = require("utils.keymap")
 local icons = require("utils.icons").get_icons("diagnostic", true)
+local utils = require("utils.utils")
 
 local M = {
   requires = {
@@ -42,36 +43,48 @@ function M.lsp_diagnostic_init()
   end
 end
 
-function M.load()
-  M.lsp_diagnostic_init()
-
-  -- 获取lspconfig和mason对语言服务的名称映射
+function M.enable_all_clients()
+  -- 获取 lspconfig 和 mason 对语言服务的名称映射
   local mappings = M.mason_lspconfig.get_mappings()
   -- 获取已经安装的语言服务
   local servers = M.mason_lspconfig.get_installed_servers()
 
   for _, server_name in ipairs(servers) do
-    local map_name = mappings.lspconfig_to_package[server_name] or server_name;
+    local server_mason_name = mappings.lspconfig_to_package[server_name] or server_name;
+    if options.lsp_debug then vim.print(server_name .. " language server mapping name " .. server_mason_name) end
+    local config_path = path_util.join(M.server_configurations_directory, server_mason_name);
 
-    if options.lsp_debug then
-      vim.print(server_name .. " language server mapping name " .. map_name)
-    end
-
-    local config_path = path_util.join(M.server_configurations_directory, map_name);
-    local ok, configuration = pcall(require, config_path)
-    if options.lsp_debug then
-      vim.print(server_name .. '语言服务配置路径' .. config_path)
-    end
-
-    if not vim.tbl_contains(options.disabled_language_servers, map_name) then
-      -- 合并语言服务配置
-      if ok then
-        vim.lsp.config(server_name, configuration);
+    -- custom workspace
+    if options.workspace_language_configurations then
+      local convert_mason_name = utils.replace_dot_and_center_line_char_to_underline(server_mason_name);
+      if options.workspace_language_configurations[convert_mason_name] then
+        config_path = options.workspace_language_configurations[convert_mason_name]
       end
+    end
+
+    if options.lsp_debug then vim.print(server_name .. " 语言服务配置路径 " .. config_path) end
+    local ok, configuration = pcall(require, config_path)
+    if options.lsp_debug and not ok then vim.print(server_name .. " 语言服务配置加载失败 " .. config_path) end
+    if not vim.tbl_contains(options.disabled_language_servers, server_mason_name) then
+      -- 合并语言服务配置
+      if ok then vim.lsp.config(server_name, configuration) end
       -- 启用语言服务
-      vim.lsp.enable(server_name);
+      vim.lsp.enable(server_name)
     end
   end
+end
+
+function M.disable_all_clients()
+  local servers = M.mason_lspconfig.get_installed_servers()
+  for _, server_name in ipairs(servers) do
+    vim.lsp.stop_client(server_name)
+    -- print(" ----- disable language server: " .. server_name .. " ----- ")
+  end
+end
+
+function M.load()
+  M.lsp_diagnostic_init()
+  M.enable_all_clients()
 end
 
 function M.after()
@@ -108,7 +121,6 @@ function M.register_key()
         require("telescope.builtin").lsp_references({
           fname_width = 200,
           show_line = false,
-          reuse_win = true,
         })
       end,
       options = { silent = true },
@@ -128,7 +140,6 @@ function M.register_key()
         require("telescope.builtin").lsp_definitions({
           fname_width = 200,
           show_line = false,
-          reuse_win = true,
         })
       end,
       options = { silent = true },
@@ -139,12 +150,12 @@ function M.register_key()
       lhs = "go",
       rhs = function()
         require("telescope.builtin").diagnostics({
-          bufnr = 0,
           line_width = 200,
+          bufnr = 0,
         })
       end,
       options = { silent = true },
-      description = "Show Current Buffer Diagnostics",
+      description = "Show Buffer Diagnostics",
     },
     {
       mode = { "n" },
@@ -201,11 +212,19 @@ function M.show_line_diagnostic()
 end
 
 function M.goto_prev_diagnostic()
-  vim.diagnostic.jump({ count = -1, float = { border = options.float_border and "rounded" or "none" }, _highest = true })
+  vim.diagnostic.jump({
+    count = -1,
+    float = { border = options.float_border and "rounded" or "none" },
+    _highest = true,
+  })
 end
 
 function M.goto_next_diagnostic()
-  vim.diagnostic.jump({ count = 1, float = { border = options.float_border and "rounded" or "none" }, _highest = true })
+  vim.diagnostic.jump({
+    count = 1,
+    float = { border = options.float_border and "rounded" or "none" },
+    _highest = true,
+  })
 end
 
 return M

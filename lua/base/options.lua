@@ -20,6 +20,7 @@ local M = {
   transparent = true,
   -- 禁用的语言服务
   disabled_language_servers = {},
+  workspace_language_configurations = nil,
   -- telescope忽略
   telescope_file_ignore_patterns = {},
   -- nvim-tree忽略，配置这个字段时需要reload一下nvim-tree插件
