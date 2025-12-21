@@ -1,14 +1,11 @@
 -- https://github.com/lukas-reineke/indent-blankline.nvim
+local highlight = require("utils.highlight")
 
 local M = {
   requires = {
     "ibl",
   },
 }
-
-function M.after()
-  vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = "#B5B5B5" })
-end
 
 function M.load()
   M.ibl.setup({
@@ -37,6 +34,10 @@ function M.load()
       },
     },
   })
+end
+
+function M.after()
+  highlight.overwrite_indent_blankline_plugin_highlight()
 end
 
 return M

@@ -1,5 +1,6 @@
 -- https://github.com/Saghen/blink.cmp
 
+local highlight = require("utils.highlight")
 local options = require("base.options")
 
 local M = {
@@ -99,10 +100,7 @@ function M.load()
 end
 
 function M.after()
-  vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "#333c43" })
-  vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#859289", bg = "#333c43" })
-  vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#859289", bg = "#333c43" })
-  vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#859289", bg = "#333c43" })
+  highlight.overwrite_blink_plugin_highlight()
 end
 
 return M

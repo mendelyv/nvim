@@ -1,3 +1,5 @@
+local highlight = require("utils.highlight")
+
 local M = {}
 
 function M.load()
@@ -13,9 +15,8 @@ function M.load()
 
   vim.cmd.colorscheme("everforest")
 
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#333c43" })
-  vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#859289", bg = "#333c43" })
-  vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#DCA561", bold = true, })
+  highlight.overwrite_float_highlight()
+  highlight.overwrite_cursor_line_number_highlight()
 end
 
 return M

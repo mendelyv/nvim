@@ -1,6 +1,7 @@
 -- https://github.com/goolord/alpha-nvim
 
 local icons = require("utils.icons").get_icons("dashboard", true)
+local highlight = require("utils.highlight")
 
 local M = {
   requires = {
@@ -11,7 +12,7 @@ local M = {
 
 function M.load()
   local dashboard = M.alpha_themes_dashboard
-  vim.api.nvim_set_hl(0, "DashboardLogo1", { fg = "#83C092" })
+  highlight.overwrite_alpha_plugin_highlight()
   dashboard.section.header.opts = { hl = "DashboardLogo1", position = "center" }
   dashboard.section.header.val = {
     [[                                                    ]],
