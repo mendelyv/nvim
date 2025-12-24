@@ -39,6 +39,11 @@ function M.load()
     },
     actions = {
       use_system_clipboard = true,
+      file_popup = {
+        open_win_config = {
+          border = "rounded",
+        },
+      },
       open_file = {
         window_picker = { enable = true },
       },
