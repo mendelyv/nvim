@@ -21,7 +21,6 @@ function M.load()
       prompt_prefix = " ",
       selection_caret = " ",
       entry_prefix = " ",
-      multi_icon = " ",
       color_devicons = true,
       file_ignore_patterns = options.telescope_file_ignore_patterns,
       -- theme
@@ -245,7 +244,7 @@ function M.register_key()
     },
     {
       mode = { "n" },
-      lhs = "<leader>fs",
+      lhs = "<leader>fl",
       rhs = function()
         require("telescope.builtin").lsp_document_symbols()
       end,
@@ -254,7 +253,7 @@ function M.register_key()
     },
     {
       mode = { "n" },
-      lhs = "<leader>fS",
+      lhs = "<leader>fL",
       rhs = function()
         require("telescope.builtin").lsp_workspace_symbols()
       end,
