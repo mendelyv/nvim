@@ -9,6 +9,24 @@ local M = {
   }
 }
 
+function M.before()
+  vim.api.nvim_create_user_command(
+    "TransparentON",
+    function()
+      M.toggle(true)
+    end,
+    { range = true }
+  )
+
+  vim.api.nvim_create_user_command(
+    "TransparentOFF",
+    function()
+      M.toggle(false)
+    end,
+    { range = true }
+  )
+end
+
 function M.load()
   -- M.transparent.clear_prefix("lualine")
   M.transparent.setup({
@@ -47,24 +65,16 @@ function M.after()
     vim.cmd("TransparentDisable")
     highlight.overwrite_all_highlight()
   end
+end
 
-  vim.api.nvim_create_user_command(
-    "TransparentON",
-    function()
-      vim.cmd("TransparentEnable")
-      highlight.overwrite_cursor_line_number_highlight()
-    end,
-    { nargs = "*" }
-  )
-
-  vim.api.nvim_create_user_command(
-    "TransparentOFF",
-    function()
-      vim.cmd("TransparentDisable")
-      highlight.overwrite_all_highlight()
-    end,
-    { nargs = "*" }
-  )
+function M.toggle(on)
+  if on then
+    vim.cmd("TransparentEnable")
+    highlight.overwrite_cursor_line_number_highlight()
+  else
+    vim.cmd("TransparentDisable")
+    highlight.overwrite_all_highlight()
+  end
 end
 
 return M
