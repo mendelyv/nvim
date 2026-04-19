@@ -15,6 +15,7 @@ map_util.register_all({
     mode = { "n" },
     lhs = "<c-w>a",
     rhs = function()
+      if vim.fn.winnr("$") == 1 then return end
       local tree = require("nvim-tree.api").tree
       if nil ~= tree and tree.is_visible then tree.close() end
       vim.cmd("wincmd _")
