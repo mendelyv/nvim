@@ -13,7 +13,7 @@ local M = {
   -- 代码片段存放路径
   snippets_config_directory = path_util.join(vim.fn.stdpath("config"), "snippets"),
   -- session 存放路径
-  session_directory = path_util.join(vim.fn.stdpath("data"), "sessions"),
+  session_directory = path_util.join(vim.fn.stdpath("data"), "/sessions/"),
   -- 悬浮窗
   float_border = true,
   -- 透明

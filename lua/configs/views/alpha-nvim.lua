@@ -54,8 +54,17 @@ function M.load()
   -- }
 
   dashboard.section.buttons.val = {
-    dashboard.button("b", " " .. icons.Session .. "> Restore session", "<cmd>silent! SessionLoad<CR>"),
-    dashboard.button("f", " " .. icons.Find .. "> Find File", "<cmd>silent lua require(\"telescope.builtin\").find_files({ hidden = true })<CR>"),
+    -- dashboard.button("b", " " .. icons.Session .. "> Restore session", "<cmd>silent! SessionLoad<CR>"),
+    dashboard.button("b", " " .. icons.Session .. "> Restore session",
+      function()
+        require("persistence").load()
+      end
+    ),
+    dashboard.button("f", " " .. icons.Find .. "> Find File",
+      function()
+        require("telescope.builtin").find_files({ hidden = true })
+      end
+    ),
     dashboard.button("n", " " .. icons.NewFile .. "> New File", ":ene <BAR> startinsert <CR>"),
     dashboard.button("p", " " .. icons.Lazy .. "> Lazy", ":Lazy<CR>"),
     dashboard.button("q", " " .. icons.Quit .. "> Quit Neovim", ":qa<CR>"),

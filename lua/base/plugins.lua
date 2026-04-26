@@ -59,8 +59,8 @@ M.views = {
   },
   {
     -- session管理器
-    "olimorris/persisted.nvim",
-    event = { "VeryLazy" },
+    "folke/persistence.nvim",
+    event = "BufReadPre",
   },
   {
     -- 色值显示
@@ -91,9 +91,9 @@ M.lsp = {
     event = { "VeryLazy" },
   },
   {
-    -- 代码格式化
-    "mhartington/formatter.nvim",
-    event = { "VeryLazy" },
+    -- code formatter
+    'stevearc/conform.nvim',
+    lazy = true,
   },
 }
 
@@ -101,15 +101,12 @@ M.complete = {
   {
     'saghen/blink.cmp',
     dependencies = {
-      'rafamadriz/friendly-snippets',
+      "saghen/blink.lib",
+      "rafamadriz/friendly-snippets",
       "xzbdmw/colorful-menu.nvim",
     },
-    version = "1.*",
+    -- version = "1.*",
     event = { "InsertEnter", "CmdlineEnter" },
-  },
-  {
-    'luozhiya/fittencode.nvim',
-    event = { 'VeryLazy' },
   },
 }
 
@@ -161,7 +158,7 @@ M.editor = {
       "nvim-telescope/telescope-fzf-native.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
-    lazy = true,
+    event = { "VeryLazy" },
   },
   {
     -- 光标跳转(其实功能很多 =.= )
