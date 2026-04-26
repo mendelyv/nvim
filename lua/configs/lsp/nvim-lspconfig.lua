@@ -74,14 +74,6 @@ function M.enable_all_clients()
   end
 end
 
-function M.disable_all_clients()
-  local servers = M.mason_lspconfig.get_installed_servers()
-  for _, server_name in ipairs(servers) do
-    vim.lsp.stop_client(server_name)
-    -- print(" ----- disable language server: " .. server_name .. " ----- ")
-  end
-end
-
 function M.load()
   M.lsp_diagnostic_init()
   M.enable_all_clients()

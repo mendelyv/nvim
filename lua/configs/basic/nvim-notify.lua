@@ -17,7 +17,7 @@ end
 function M.load()
   M.notify.setup({
     stages = "slide",
-    timeout = 3000,
+    timeout = 1500,
     icons = {
       ERROR = icons.Error,
       WARN = icons.Warn,
